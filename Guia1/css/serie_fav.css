@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    color: #ffffff;
+    line-height: 1.7;
+}
+
+#encabezado-principal {
+    text-align: center;
+    padding: 30px 15px 15px 15px;
+}
+
+.titulo-serie {
+    font-size: 3.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #e50914;
+    text-shadow: 0 0 15px rgba(229, 9, 20, 0.6), 2px 2px 5px #000000;
+    margin: 0;
+}
+
+#contenedor-principal {
+    width: 85%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.seccion-portada,
+.seccion-secundaria {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.imagen-destacada {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(229, 9, 20, 0.4);
+}
+
+.bloque-contenido {
+    background-color: rgba(3, 10, 48, 0.75);
+    padding: 30px;
+    border-radius: 12px;
+    margin: 30px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.subtitulo-seccion {
+    color: #ff3344; 
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.parrafo-trama {
+    font-size: 1.05rem;
+    color: #e6edf3;
+    margin-bottom: 18px;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.parrafo-trama em {
+    color: #38bdf8;
+    font-style: italic;
+}
+
+.titulo-lista {
+    color: #38bdf8;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.lista-detalles {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 25px auto;
+    max-width: 650px;
+}
+
+.lista-detalles li {
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.98rem;
+}
+
+.lista-detalles li strong {
+    color: #ff4d5a;
+}
+
+#pie-pagina {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(2, 0, 36, 0.9);
+    border-top: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.texto-pie {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
