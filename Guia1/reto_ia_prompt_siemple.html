@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Coffee Cup | Café Gourmet de El Salvador</title>
+  
+  <!-- Tipografía de Google Fonts e Iconos de Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <style>
+    /* =========================================
+       VARIABLES Y RESET GLOBAL
+       ========================================= */
+    :root {
+      --primary-dark: #1f120c;
+      --primary-coffee: #3d2314;
+      --primary-accent: #c68a4c;
+      --accent-hover: #b07436;
+      --light-cream: #faf7f2;
+      --soft-bg: #f4ede4;
+      --card-bg: #ffffff;
+      --text-main: #2b2521;
+      --text-muted: #6e655f;
+      --border-color: #e5dacd;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 4px 12px rgba(31, 18, 12, 0.05);
+      --shadow-md: 0 10px 30px rgba(31, 18, 12, 0.09);
+      --shadow-lg: 0 18px 45px rgba(31, 18, 12, 0.15);
+      --transition: all 0.28s ease;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--light-cream);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* =========================================
+       HEADER Y NAVBAR
+       ========================================= */
+    .topbar {
+      background-color: var(--primary-dark);
+      color: #dfd5cb;
+      font-size: 0.82rem;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .topbar-info {
+      display: flex;
+      gap: 20px;
+    }
+
+    .topbar-info span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .topbar-info .material-symbols-outlined {
+      font-size: 1rem;
+      color: var(--primary-accent);
+    }
+
+    .header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary-coffee);
+      letter-spacing: 0.5px;
+    }
+
+    .brand-logo span.badge {
+      background-color: var(--primary-accent);
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: 0.93rem;
+      color: var(--primary-dark);
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-accent);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary-accent);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-accent);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(198, 138, 76, 0.35);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: var(--primary-coffee);
+      color: var(--primary-coffee);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary-coffee);
+      color: #ffffff;
+    }
+
+    /* =========================================
+       HERO SECTION
+       ========================================= */
+    .hero {
+      background: linear-gradient(135deg, rgba(31, 18, 12, 0.94), rgba(61, 35, 20, 0.88)), 
+                  url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1500&q=80') center/cover;
+      color: #ffffff;
+      padding: 100px 0 120px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(198, 138, 76, 0.25);
+      border: 1px solid var(--primary-accent);
+      color: #f7d5a5;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem;
+      line-height: 1.15;
+      margin-bottom: 22px;
+      font-weight: 700;
+    }
+
+    .hero-content p {
+      font-size: 1.15rem;
+      color: #dfd6cc;
+      margin-bottom: 34px;
+      max-width: 540px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Tarjeta Virtual en Hero */
+    .loyalty-preview-card {
+      background: linear-gradient(135deg, #2e1a0e, #130904);
+      border: 1px solid rgba(198, 138, 76, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loyalty-preview-card::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(198, 138, 76, 0.35) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .card-chip {
+      width: 44px;
+      height: 32px;
+      background: linear-gradient(135deg, #d3b27b, #93713f);
+      border-radius: 6px;
+    }
+
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--primary-accent);
+      letter-spacing: 1px;
+    }
+
+    .card-number {
+      font-family: monospace;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      color: #ede2d3;
+      margin-bottom: 25px;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: #ab9c90;
+    }
+
+    .card-bottom strong {
+      display: block;
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* =========================================
+       SECCIÓN: BENEFICIOS RÁPIDOS
+       ========================================= */
+    .features {
+      margin-top: -50px;
+      position: relative;
+      z-index: 10;
+      margin-bottom: 70px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-box {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: var(--transition);
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-icon {
+      background: rgba(198, 138, 76, 0.15);
+      color: var(--primary-accent);
+      padding: 14px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-text h3 {
+      font-size: 1.05rem;
+      color: var(--primary-coffee);
+      margin-bottom: 4px;
+    }
+
+    .feature-text p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* =========================================
+       SECCIÓN: MENÚ DESTACADO
+       ========================================= */
+    .section-title {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 50px;
+    }
+
+    .section-title span.sub {
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      font-size: 0.8rem;
+      color: var(--primary-accent);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      color: var(--primary-coffee);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 25px;
+      margin-bottom: 80px;
+    }
+
+    .menu-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .menu-card-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .menu-card-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .menu-category-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary-accent);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .menu-card-body h3 {
+      font-size: 1.15rem;
+      color: var(--primary-coffee);
+      margin-bottom: 8px;
+    }
+
+    .menu-card-body p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .menu-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .menu-card-footer .points-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.8rem;
+      color: #925400;
+      background: #fef7e9;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    /* =========================================
+       SECCIÓN: AFILIACIÓN TCC CARD (FORMULARIO)
+       ========================================= */
+    .loyalty-section {
+      background: var(--soft-bg);
+      padding: 90px 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .loyalty-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .loyalty-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      color: var(--primary-coffee);
+      margin-bottom: 18px;
+    }
+
+    .loyalty-info p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-size: 1rem;
+    }
+
+    .rule-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .rule-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .rule-list li .material-symbols-outlined {
+      color: var(--primary-accent);
+      background: #fff;
+      padding: 4px;
+      border-radius: 50%;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Formulario estilizado */
+    .form-card {
+      background: var(--card-bg);
+      padding: 38px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .form-header {
+      margin-bottom: 24px;
+    }
+
+    .form-header h3 {
+      font-size: 1.4rem;
+      color: var(--primary-coffee);
+    }
+
+    .form-header p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .input-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .input-control {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.9rem;
+      background: #fdfdfd;
+      transition: var(--transition);
+    }
+
+    .input-control:focus {
+      outline: none;
+      border-color: var(--primary-accent);
+      box-shadow: 0 0 0 3px rgba(198, 138, 76, 0.18);
+      background: #ffffff;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .checkbox-group input {
+      accent-color: var(--primary-accent);
+      width: 16px;
+      height: 16px;
+    }
+
+    .checkbox-group a {
+      color: var(--primary-accent);
+      text-decoration: underline;
+    }
+
+    /* =========================================
+       SUCURSALES
+       ========================================= */
+    .branches-section {
+      padding: 85px 0;
+    }
+
+    .branch-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .branch-item {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: var(--transition);
+    }
+
+    .branch-item:hover {
+      border-color: var(--primary-accent);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .branch-item .icon-circle {
+      background: var(--soft-bg);
+      color: var(--primary-coffee);
+      padding: 10px;
+      border-radius: 50%;
+    }
+
+    .branch-item h4 {
+      font-size: 0.95rem;
+      color: var(--primary-coffee);
+    }
+
+    .branch-item span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+    .footer {
+      background: var(--primary-dark);
+      color: #ede2d3;
+      padding: 70px 0 30px;
+      border-top: 4px solid var(--primary-accent);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+      color: var(--primary-accent);
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.88rem;
+      color: #b7a99c;
+    }
+
+    .footer-col ul a:hover {
+      color: #ffffff;
+      padding-left: 5px;
+    }
+
+    .footer-desc {
+      font-size: 0.88rem;
+      color: #b7a99c;
+      margin-top: 14px;
+      line-height: 1.7;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.82rem;
+      color: #8c7e73;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* =========================================
+       RESPONSIVE DESIGN (MEDIA QUERIES)
+       ========================================= */
+    @media (max-width: 992px) {
+      .hero-grid, .loyalty-layout {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .nav-links {
+        display: none; /* En producción se despliega con toggle móvil */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra Superior de Información -->
+  <aside class="topbar" aria-label="Información rápida">
+    <div class="container">
+      <div class="topbar-info">
+        <span><span class="material-symbols-outlined">location_on</span> Más de 30 sucursales en El Salvador</span>
+        <span><span class="material-symbols-outlined">verified</span> Calidad de Exportación 100% Salvadoreña</span>
+      </div>
+      <div class="topbar-links">
+        <a href="#tarjeta" style="color: var(--primary-accent); font-weight:600;">The Coffee Cup Card</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Encabezado Principal con Navegación -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="#" class="brand-logo">
+        <span class="material-symbols-outlined" style="font-size: 2rem; color: var(--primary-accent);">coffee</span>
+        THE COFFEE CUP
+        <span class="badge">SV</span>
+      </a>
+
+      <nav aria-label="Menú principal">
+        <ul class="nav-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#historia">Quiénes Somos</a></li>
+          <li><a href="#sucursales">Sucursales</a></li>
+          <li><a href="#tarjeta">TCC Card</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#registro" class="btn btn-primary">
+          <span class="material-symbols-outlined">account_balance_wallet</span>
+          Únete al Club
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="hero-tag">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">eco</span>
+            Gourmet Coffee Experience
+          </span>
+          <h1>Pasión por el auténtico café salvadoreño.</h1>
+          <p>
+            Desde nuestra primera taza por Doña Leyla de Quirós, servimos café con el estándar más alto de calidad, notas aromáticas únicas y el ambiente cálido que mereces.
+          </p>
+          <div class="hero-buttons">
+            <a href="#menu" class="btn btn-primary">
+              <span class="material-symbols-outlined">restaurant_menu</span> Ver Menú Completo
+            </a>
+            <a href="#sucursales" class="btn btn-outline" style="color:#fff; border-color:#fff;">
+              <span class="material-symbols-outlined">near_me</span> Ver Sucursales
+            </a>
+          </div>
+        </div>
+
+        <!-- Vista previa estilizada de The Coffee Cup Card -->
+        <div class="loyalty-preview-card">
+          <div class="card-top">
+            <div class="card-chip"></div>
+            <span class="card-name">THE COFFEE CUP</span>
+          </div>
+          <div class="card-number">•••• •••• •••• 2026</div>
+          <div class="card-bottom">
+            <div>
+              <span>Titular</span>
+              <strong>Cliente Preferencial</strong>
+            </div>
+            <div>
+              <span>Puntos x $1</span>
+              <strong>4 Pts</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beneficios Rápidos -->
+    <section class="features">
+      <div class="container features-grid">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <div class="feature-text">
+            <h3>Programa TCC Card</h3>
+            <p>Gana 4 puntos por cada dólar en compras y canjea por tus bebidas favoritas.</p>
+          </div>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon">
+            <span class="material-symbols-outlined">local_cafe</span>
+          </div>
+          <div class="feature-text">
+            <h3>Grano 100% Gourmet</h3>
+            <p>Cosechas seleccionadas de las mejores cordilleras cafetaleras del país.</p>
+          </div>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon">
+            <span class="material-symbols-outlined">storefront</span>
+          </div>
+          <div class="feature-text">
+            <h3>Autoservicio y Bares</h3>
+            <p>Disfruta de tu café en nuestras barras, kioscos o en tu coche.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Menú Destacado -->
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-title">
+          <span class="sub">Nuestras Creaciones</span>
+          <h2>Especialidades de la Casa</h2>
+        </div>
+
+        <div class="menu-grid">
+          <!-- Card 1 -->
+          <article class="menu-card">
+            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" alt="Caramel Macchiato" class="menu-card-img" />
+            <div class="menu-card-body">
+              <span class="menu-category-tag">Especialidad Caliente</span>
+              <h3>Caramel Macchiato</h3>
+              <p>Espresso gourmet, leche vaporizada y un delicado baño de caramelo artesanal.</p>
+              <div class="menu-card-footer">
+                <span class="points-badge"><span class="material-symbols-outlined" style="font-size: 1rem;">stars</span> 16 Puntos</span>
+                <span style="font-weight: 700; color: var(--primary-coffee);">$4.25</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="menu-card">
+            <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80" alt="Frozen Mochaccino" class="menu-card-img" />
+            <div class="menu-card-body">
+              <span class="menu-category-tag">Frozen & Heladas</span>
+              <h3>Frozen Mochaccino</h3>
+              <p>La combinación perfecta de chocolate oscuro, espresso doble y crema batida.</p>
+              <div class="menu-card-footer">
+                <span class="points-badge"><span class="material-symbols-outlined" style="font-size: 1rem;">stars</span> 18 Puntos</span>
+                <span style="font-weight: 700; color: var(--primary-coffee);">$4.75</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="menu-card">
+            <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80" alt="Hot Taro & Chai" class="menu-card-img" />
+            <div class="menu-card-body">
+              <span class="menu-category-tag">Tés e Infusiones</span>
+              <h3>Hot Taro & Chai Latte</h3>
+              <p>Especias aromáticas equilibradas con notas dulces y reconfortantes.</p>
+              <div class="menu-card-footer">
+                <span class="points-badge"><span class="material-symbols-outlined" style="font-size: 1rem;">stars</span> 14 Puntos</span>
+                <span style="font-weight: 700; color: var(--primary-coffee);">$3.95</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="menu-card">
+            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Postres y Pastelería" class="menu-card-img" />
+            <div class="menu-card-body">
+              <span class="menu-category-tag">Acompañamiento</span>
+              <h3>Repostería Del Día</h3>
+              <p>Cheesecakes, brownies de chocolate y galletas horneadas cada mañana.</p>
+              <div class="menu-card-footer">
+                <span class="points-badge"><span class="material-symbols-outlined" style="font-size: 1rem;">stars</span> 12 Puntos</span>
+                <span style="font-weight: 700; color: var(--primary-coffee);">$3.50</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Afiliación / The Coffee Cup Card (Formulario Modernizado) -->
+    <section class="loyalty-section" id="registro">
+      <div class="container loyalty-layout">
+        <div class="loyalty-info">
+          <h2>Afíliate a The Coffee Cup Card</h2>
+          <p>
+            Únete a nuestra comunidad de amantes del buen café y comienza a acumular puntos desde tu primera visita en sucursales o a domicilio.
+          </p>
+
+          <ul class="rule-list">
+            <li>
+              <span class="material-symbols-outlined">check_circle</span>
+              Acumula 4 puntos por cada $1.00 en compras con efectivo o tarjeta.
+            </li>
+            <li>
+              <span class="material-symbols-outlined">check_circle</span>
+              Canjea tus puntos por cualquier bebida participante del menú.
+            </li>
+            <li>
+              <span class="material-symbols-outlined">check_circle</span>
+              Vigencia de 1 año con tu membresía activa en todo El Salvador.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Formulario con los campos reales extraídos del sitio -->
+        <div class="form-card">
+          <div class="form-header">
+            <h3>Registro de Usuario</h3>
+            <p>Ingresa tus datos para activar tu cuenta digital</p>
+          </div>
+
+          <form action="#" method="POST">
+            <div class="form-row">
+              <div class="input-group">
+                <label for="nombres">Nombres</label>
+                <input type="text" id="nombres" name="nombres" class="input-control" placeholder="Ej. Juan Carlos" required />
+              </div>
+              <div class="input-group">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" name="apellidos" class="input-control" placeholder="Ej. Pérez Gómez" required />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="correo">Correo Electrónico</label>
+              <input type="email" id="correo" name="correo" class="input-control" placeholder="tu.correo@ejemplo.com" required />
+            </div>
+
+            <div class="input-group">
+              <label for="producto_fav">Selecciona tu producto favorito</label>
+              <select id="producto_fav" name="producto_fav" class="input-control">
+                <option value="">Seleccione una opción</option>
+                <option value="Caramel macchiato">Caramel macchiato</option>
+                <option value="Frozen mochaccino">Frozen mochaccino</option>
+                <option value="Cappuccino">Cappuccino clásico</option>
+                <option value="Mocha helado">Mocha helado con coco y nuez</option>
+                <option value="Hot chai latte">Hot chai latte</option>
+                <option value="Green tea smoothie">Green tea smoothie</option>
+                <option value="Americano gourmet">Americano extra gourmet</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="sucursal">Sucursal de tu preferencia</label>
+              <select id="sucursal" name="sucursal" class="input-control">
+                <option value="">Seleccione una sucursal</option>
+                <option value="Multiplaza">Multiplaza</option>
+                <option value="Galerias">Galerías - Escalón</option>
+                <option value="Santa Elena">Santa Elena</option>
+                <option value="Surf City">La Libertad - Surf City</option>
+                <option value="Centro Historico">Centro Histórico de San Salvador</option>
+                <option value="Plaza Mundo Soyapango">Plaza Mundo (Soyapango)</option>
+                <option value="Plaza Merliot">Plaza Merliot</option>
+                <option value="Metrocentro San Miguel">Metrocentro (San Miguel)</option>
+              </select>
+            </div>
+
+            <label class="checkbox-group">
+              <input type="checkbox" required />
+              <span>He leído y acepto los <a href="#tarjeta">Términos y Condiciones del Reglamento</a>.</span>
+            </label>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              <span class="material-symbols-outlined">how_to_reg</span> Registrarme en The Coffee Cup
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sucursales Destacadas -->
+    <section class="branches-section" id="sucursales">
+      <div class="container">
+        <div class="section-title">
+          <span class="sub">Encuéntranos Cerca de Ti</span>
+          <h2>Nuestras Sucursales Principales</h2>
+        </div>
+
+        <div class="branch-cards">
+          <div class="branch-item">
+            <span class="material-symbols-outlined icon-circle">storefront</span>
+            <div>
+              <h4>Centro Histórico</h4>
+              <span>Plaza Gerardo Barrios, SS</span>
+            </div>
+          </div>
+
+          <div class="branch-item">
+            <span class="material-symbols-outlined icon-circle">storefront</span>
+            <div>
+              <h4>Multiplaza</h4>
+              <span>Nivel 2, Antiguo Cuscatlán</span>
+            </div>
+          </div>
+
+          <div class="branch-item">
+            <span class="material-symbols-outlined icon-circle">storefront</span>
+            <div>
+              <h4>Surf City</h4>
+              <span>Malecón del Puerto de La Libertad</span>
+            </div>
+          </div>
+
+          <div class="branch-item">
+            <span class="material-symbols-outlined icon-circle">drive_eta</span>
+            <div>
+              <h4>Autoservicio Los Héroes</h4>
+              <span>Bldv. Los Héroes, San Salvador</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="brand-logo" style="color: #fff; margin-bottom: 12px;">
+          THE COFFEE CUP
+        </div>
+        <p class="footer-desc">
+          Líderes en la cultura del café gourmet en El Salvador. Innovando con sabor, tradición y la calidad inigualable del grano nacional.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Enlaces de Interés</h4>
+        <ul>
+          <li><a href="#menu">Nuestro Menú</a></li>
+          <li><a href="#historia">Historia de Doña Leyla</a></li>
+          <li><a href="#sucursales">Red de Sucursales</a></li>
+          <li><a href="#tarjeta">Franquicias Disponibles</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Programa de Lealtad</h4>
+        <ul>
+          <li><a href="#registro">Afíliate a TCC Card</a></li>
+          <li><a href="#">Reglamento Oficial</a></li>
+          <li><a href="#">Tabla de Canje de Bebidas</a></li>
+          <li><a href="#">Consultar Mis Puntos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><span style="color:var(--primary-accent);">Tel:</span> +503 2200-0000</li>
+          <li><span style="color:var(--primary-accent);">Email:</span> info@thecoffeecup.com.sv</li>
+          <li><span style="color:var(--primary-accent);">País:</span> San Salvador, El Salvador</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 The Coffee Cup El Salvador. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

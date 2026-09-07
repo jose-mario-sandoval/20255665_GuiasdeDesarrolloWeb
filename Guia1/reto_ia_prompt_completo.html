@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Coffee Cup | El Salvador</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+  /* ==========================================================
+     1. VARIABLES / RESET
+  ========================================================== */
+  :root{
+    --coffee-dark:   #2b1810;
+    --coffee:        #5c3a28;
+    --coffee-light:  #8a5a3c;
+    --cream:         #faf3e8;
+    --cream-soft:    #f1e4d0;
+    --gold:          #c9973f;
+    --gold-light:    #e6c37a;
+    --text-dark:     #2b1810;
+    --text-muted:    #6e5a4c;
+    --white:         #ffffff;
+    --radius:        18px;
+    --shadow:        0 15px 35px rgba(43,24,16,0.15);
+    --transition:    all .35s cubic-bezier(.4,0,.2,1);
+    --font-head:     'Playfair Display', serif;
+    --font-body:     'Poppins', sans-serif;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:var(--font-body);
+    color:var(--text-dark);
+    background:var(--cream);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+
+  img{ max-width:100%; display:block; }
+  a{ text-decoration:none; color:inherit; }
+  ul{ list-style:none; }
+  section{ padding:100px 8%; }
+  h1,h2,h3,h4{ font-family:var(--font-head); color:var(--coffee-dark); }
+
+  .eyebrow{
+    display:inline-block;
+    font-size:.75rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+
+  .section-title{
+    font-size:clamp(1.8rem,3.5vw,2.8rem);
+    margin-bottom:18px;
+  }
+
+  .section-sub{
+    max-width:620px;
+    color:var(--text-muted);
+    margin-bottom:50px;
+    font-weight:300;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 32px;
+    border-radius:50px;
+    font-weight:600;
+    font-size:.95rem;
+    letter-spacing:.3px;
+    cursor:pointer;
+    border:none;
+    transition:var(--transition);
+  }
+  .btn-primary{
+    background:var(--gold);
+    color:var(--coffee-dark);
+  }
+  .btn-primary:hover{
+    background:var(--gold-light);
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(201,151,63,.45);
+  }
+  .btn-outline{
+    background:transparent;
+    color:var(--white);
+    border:2px solid var(--white);
+  }
+  .btn-outline:hover{
+    background:var(--white);
+    color:var(--coffee-dark);
+    transform:translateY(-3px);
+  }
+
+  /* ==========================================================
+     2. HEADER / NAV
+  ========================================================== */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 6%;
+    background:rgba(43,24,16,0.0);
+    transition:var(--transition);
+  }
+  header.scrolled{
+    background:rgba(43,24,16,0.92);
+    backdrop-filter:blur(8px);
+    box-shadow:0 6px 20px rgba(0,0,0,.2);
+    padding:10px 6%;
+  }
+
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo img{
+    height:44px;
+    border-radius:10px;
+    box-shadow:0 6px 16px rgba(0,0,0,.35);
+  }
+
+  nav ul{
+    display:flex;
+    gap:34px;
+  }
+  nav a{
+    color:var(--white);
+    font-size:.92rem;
+    font-weight:500;
+    letter-spacing:.3px;
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:2px;
+    background:var(--gold);
+    transition:var(--transition);
+  }
+  nav a:hover::after{ width:100%; }
+
+  .nav-cta{
+    background:var(--gold);
+    color:var(--coffee-dark) !important;
+    padding:10px 22px;
+    border-radius:50px;
+    font-weight:600;
+  }
+  .nav-cta::after{ display:none; }
+  .nav-cta:hover{ background:var(--gold-light); }
+
+  .burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+  }
+  .burger span{
+    width:26px; height:2px;
+    background:var(--white);
+    border-radius:2px;
+  }
+
+  /* ==========================================================
+     3. HERO
+  ========================================================== */
+  .hero{
+    position:relative;
+    height:100vh;
+    min-height:640px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    background:
+      linear-gradient(120deg, rgba(43,24,16,0.85) 20%, rgba(43,24,16,0.35) 65%, rgba(43,24,16,0.05) 100%),
+      url('https://images.pexels.com/photos/6612738/pexels-photo-6612738.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+  }
+
+  .hero-content{
+    max-width:600px;
+    padding:0 8%;
+    color:var(--white);
+  }
+  .hero-content .eyebrow{ color:var(--gold-light); }
+  .hero-content h1{
+    font-size:clamp(2.6rem,6vw,4.4rem);
+    color:var(--white);
+    line-height:1.08;
+    margin-bottom:22px;
+  }
+  .hero-content h1 em{
+    color:var(--gold-light);
+    font-style:italic;
+  }
+  .hero-content p{
+    font-weight:300;
+    font-size:1.05rem;
+    color:#eee2d3;
+    margin-bottom:34px;
+    max-width:480px;
+  }
+  .hero-buttons{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+
+  .hero-scroll{
+    position:absolute;
+    bottom:34px; left:50%;
+    transform:translateX(-50%);
+    color:var(--white);
+    font-size:.75rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    opacity:.8;
+  }
+  .hero-scroll span{
+    width:1px; height:36px;
+    background:var(--gold-light);
+    animation:scrollLine 1.8s infinite;
+  }
+  @keyframes scrollLine{
+    0%{ transform:scaleY(0); transform-origin:top; }
+    50%{ transform:scaleY(1); transform-origin:top; }
+    51%{ transform-origin:bottom; }
+    100%{ transform:scaleY(0); transform-origin:bottom; }
+  }
+
+  /* ==========================================================
+     4. MARQUEE / STRIP
+  ========================================================== */
+  .strip{
+    background:var(--coffee-dark);
+    color:var(--gold-light);
+    padding:16px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    font-family:var(--font-head);
+    font-size:1.1rem;
+    letter-spacing:1px;
+  }
+  .strip-track{
+    display:inline-block;
+    animation:marquee 22s linear infinite;
+  }
+  .strip-track span{ margin:0 30px; }
+  @keyframes marquee{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-50%); }
+  }
+
+  /* ==========================================================
+     5. MENÚ / PRODUCTOS
+  ========================================================== */
+  .menu-header{ text-align:center; max-width:700px; margin:0 auto 60px; }
+  .menu-header .section-sub{ margin-left:auto; margin-right:auto; }
+
+  .menu-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:28px;
+  }
+
+  .menu-card{
+    position:relative;
+    background:var(--white);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    transition:var(--transition);
+    text-align:center;
+    border:1px solid rgba(92,58,40,0.08);
+  }
+  .menu-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 45px rgba(43,24,16,.22);
+  }
+  .menu-card .img-wrap{
+    background:linear-gradient(160deg,var(--cream-soft),var(--cream));
+    padding:34px 20px 14px;
+  }
+  .menu-card img{
+    height:130px;
+    margin:0 auto;
+    object-fit:contain;
+    transition:var(--transition);
+  }
+  .menu-card:hover img{ transform:scale(1.08) rotate(-2deg); }
+  .menu-card .card-body{
+    padding:18px 16px 26px;
+  }
+  .menu-card h4{
+    font-size:1.05rem;
+    color:var(--coffee-dark);
+    margin-bottom:6px;
+  }
+  .menu-card a.card-link{
+    display:inline-block;
+    margin-top:8px;
+    font-size:.78rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    border-bottom:1px solid transparent;
+  }
+  .menu-card a.card-link:hover{ border-color:var(--gold); }
+
+  /* ==========================================================
+     6. NUESTRO SECRETO / VIDEO
+  ========================================================== */
+  .secret{
+    background:var(--coffee-dark);
+    color:var(--cream);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+    border-radius:0;
+  }
+  .secret .eyebrow{ color:var(--gold-light); }
+  .secret h2{ color:var(--white); }
+  .secret p{ color:#d9c7b2; font-weight:300; margin-bottom:30px; }
+  .secret-video{
+    position:relative;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 30px 60px rgba(0,0,0,.45);
+  }
+  .secret-video video{
+    width:100%;
+    display:block;
+  }
+  .secret-stats{
+    display:flex;
+    gap:40px;
+    margin-top:30px;
+  }
+  .secret-stats div{ text-align:left; }
+  .secret-stats h3{
+    color:var(--gold-light);
+    font-size:2rem;
+  }
+  .secret-stats span{
+    font-size:.8rem;
+    color:#c9b8a4;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+
+  /* ==========================================================
+     7. PROYECTOS
+  ========================================================== */
+  .proyectos{ background:var(--cream-soft); }
+  .proy-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:28px;
+  }
+  .proy-card{
+    position:relative;
+    height:340px;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+  }
+  .proy-card img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    transition:var(--transition);
+  }
+  .proy-card::before{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(43,24,16,0.92) 15%, rgba(43,24,16,0.05) 65%);
+    z-index:1;
+  }
+  .proy-card:hover img{ transform:scale(1.1); }
+  .proy-content{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    z-index:2;
+    padding:26px;
+    color:var(--white);
+  }
+  .proy-content h4{
+    color:var(--white);
+    font-size:1.2rem;
+    margin-bottom:8px;
+  }
+  .proy-content a{
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--gold-light);
+    font-weight:600;
+  }
+
+  /* ==========================================================
+     8. UBICACIÓN / CONTACTO CTA
+  ========================================================== */
+  .cta-band{
+    background:linear-gradient(120deg, var(--gold) 0%, var(--gold-light) 100%);
+    color:var(--coffee-dark);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding:60px 8%;
+  }
+  .cta-band h3{ color:var(--coffee-dark); font-size:1.7rem; max-width:520px; }
+  .cta-band .btn-primary{
+    background:var(--coffee-dark);
+    color:var(--gold-light);
+  }
+  .cta-band .btn-primary:hover{
+    background:var(--coffee);
+    color:var(--white);
+  }
+
+  /* ==========================================================
+     9. FOOTER
+  ========================================================== */
+  footer{
+    background:var(--coffee-dark);
+    color:#d9c7b2;
+    padding:80px 8% 30px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:50px;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .footer-grid img{ height:44px; border-radius:8px; margin-bottom:16px; }
+  .footer-grid p{ font-size:.9rem; font-weight:300; line-height:1.7; }
+  .footer-grid h5{
+    color:var(--gold-light);
+    font-family:var(--font-body);
+    font-size:.85rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .footer-grid ul li{ margin-bottom:12px; font-size:.9rem; }
+  .footer-grid ul li a{ transition:var(--transition); }
+  .footer-grid ul li a:hover{ color:var(--gold-light); padding-left:4px; }
+
+  .social-row{ display:flex; gap:12px; margin-top:8px; }
+  .social-row a{
+    width:38px; height:38px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:.85rem;
+    transition:var(--transition);
+  }
+  .social-row a:hover{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--coffee-dark);
+  }
+
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    padding-top:26px;
+    font-size:.8rem;
+    color:#a68f7a;
+  }
+
+  /* ==========================================================
+     10. RESPONSIVE
+  ========================================================== */
+  @media (max-width:960px){
+    .secret{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+  }
+
+  @media (max-width:780px){
+    nav{
+      position:fixed;
+      top:0; right:-100%;
+      width:70%; height:100vh;
+      background:var(--coffee-dark);
+      flex-direction:column;
+      padding:100px 30px;
+      transition:var(--transition);
+    }
+    nav.open{ right:0; }
+    nav ul{ flex-direction:column; gap:22px; }
+    .burger{ display:flex; z-index:1100; }
+    .cta-band{ flex-direction:column; text-align:center; }
+    .footer-grid{ grid-template-columns:1fr; }
+    section{ padding:70px 6%; }
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header id="siteHeader">
+    <a href="#inicio" class="logo">
+      <img src="data:image/png;base64,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" alt="The Coffee Cup">
+    </a>
+
+    <nav id="mainNav">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#secreto">Nuestro Secreto</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#footer">Sucursales</a></li>
+        <li><a href="#footer" class="nav-cta">Contáctanos</a></li>
+      </ul>
+    </nav>
+
+    <div class="burger" id="burgerBtn">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="inicio" style="padding:0;">
+    <div class="hero-content">
+      <span class="eyebrow">100% Café Salvadoreño</span>
+      <h1>El aroma que <em>despierta</em><br>tu día a día</h1>
+      <p>Desde el corazón de El Salvador, tostamos y servimos café de origen para acompañar cada una de tus historias, una taza a la vez.</p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">Ver el menú</a>
+        <a href="#secreto" class="btn btn-outline">Nuestra historia</a>
+      </div>
+    </div>
+    <div class="hero-scroll"><span></span>Desliza</div>
+  </section>
+
+  <!-- ===================== STRIP ===================== -->
+  <div class="strip">
+    <div class="strip-track">
+      <span>☕ ESPRESSO ITALIANO</span><span>☕ COSECHADO EN EL SALVADOR</span><span>☕ FRAPPÉS Y SMOOTHIES</span><span>☕ TOSTADO ARTESANAL</span>
+      <span>☕ ESPRESSO ITALIANO</span><span>☕ COSECHADO EN EL SALVADOR</span><span>☕ FRAPPÉS Y SMOOTHIES</span><span>☕ TOSTADO ARTESANAL</span>
+    </div>
+  </div>
+
+  <!-- ===================== MENÚ ===================== -->
+  <section id="menu">
+    <div class="menu-header">
+      <span class="eyebrow">Nuestra carta</span>
+      <h2 class="section-title">Nuestros productos</h2>
+      <p class="section-sub">Explora nuestras categorías, desde clásicos con espresso hasta opciones sin azúcar y postres irresistibles.</p>
+    </div>
+
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <div class="img-wrap"><img src="https://img.magnific.com/foto-gratis/delicioso-cafe-decoraciones-pascua_23-2150249792.jpg?semt=ais_test_b&w=740&q=80" alt="Calientes con Espresso"></div>
+        <div class="card-body">
+          <h4>Calientes con Espresso</h4>
+          <a class="card-link" href="https://thecoffeecup.com.sv/frontend/menu.php?id=53">Ver más</a>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="img-wrap"><img src="https://images.pexels.com/photos/11100423/pexels-photo-11100423.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Frías con Espresso"></div>
+        <div class="card-body">
+          <h4>Frías con Espresso</h4>
+          <a class="card-link" href="https://thecoffeecup.com.sv/frontend/menu.php?id=54">Ver más</a>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="img-wrap"><img src="https://images.pexels.com/photos/2424034/pexels-photo-2424034.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bebidas sin Café"></div>
+        <div class="card-body">
+          <h4>Bebidas sin Café</h4>
+          <a class="card-link" href="https://thecoffeecup.com.sv/frontend/menu.php?id=60">Ver más</a>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="img-wrap"><img src="https://images.pexels.com/photos/775032/pexels-photo-775032.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sugar Free"></div>
+        <div class="card-body">
+          <h4>Sugar Free</h4>
+          <a class="card-link" href="https://thecoffeecup.com.sv/frontend/menu.php?id=58">Ver más</a>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="img-wrap"><img src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Postres"></div>
+        <div class="card-body">
+          <h4>Postres</h4>
+          <a class="card-link" href="https://thecoffeecup.com.sv/frontend/menu.php?id=56">Ver más</a>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="img-wrap"><img src="https://images.pexels.com/photos/3639538/pexels-photo-3639538.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Más Postres"></div>
+        <div class="card-body">
+          <h4>Más Postres</h4>
+          <a class="card-link" href="https://thecoffeecup.com.sv/frontend/menu.php?id=57">Ver más</a>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="img-wrap"><img src="https://images.pexels.com/photos/6583688/pexels-photo-6583688.jpeg?auto=compress&cs=tinysrgb&w=600" alt="For Kids"></div>
+        <div class="card-body">
+          <h4>For Kids</h4>
+          <a class="card-link" href="https://thecoffeecup.com.sv/frontend/menu.php?id=59">Ver más</a>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="img-wrap"><img src="https://images.pexels.com/photos/6605340/pexels-photo-6605340.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Deli Corner"></div>
+        <div class="card-body">
+          <h4>Deli Corner</h4>
+          <a class="card-link" href="https://thecoffeecup.com.sv/frontend/menu.php?id=62">Ver más</a>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="img-wrap"><img src="https://images.pexels.com/photos/942808/pexels-photo-942808.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Para llevar"></div>
+        <div class="card-body">
+          <h4>Para llevar</h4>
+          <a class="card-link" href="https://thecoffeecup.com.sv/frontend/libras_cafe.php">Ver más</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== NUESTRO SECRETO ===================== -->
+  <section class="secret" id="secreto">
+    <div>
+      <span class="eyebrow">Detrás de cada taza</span>
+      <h2 class="section-title">Nuestro secreto</h2>
+      <p>Cada grano es seleccionado, tostado y preparado con el mismo cuidado con el que Doña Leyla de Quirós comenzó este sueño. Así nace el sabor que nos distingue en cada sucursal de El Salvador.</p>
+      <a href="https://thecoffeecup.com.sv/frontend/nuestra_historia.php" class="btn btn-primary">Conoce nuestra historia</a>
+
+      <div class="secret-stats">
+        <div><h3>+40</h3><span>Sucursales</span></div>
+        <div><h3>100%</h3><span>Café salvadoreño</span></div>
+        <div><h3>+30</h3><span>Años de tradición</span></div>
+      </div>
+    </div>
+
+    <div class="secret-video">
+      <video controls poster="https://images.pexels.com/photos/7125541/pexels-photo-7125541.jpeg?auto=compress&cs=tinysrgb&w=1200">
+        <source src="https://thecoffeecup.com.sv/img/index/video.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
+    </div>
+  </section>
+
+  <!-- ===================== PROYECTOS ===================== -->
+  <section class="proyectos" id="proyectos">
+    <div class="menu-header">
+      <span class="eyebrow">Más allá del café</span>
+      <h2 class="section-title">Nuestros proyectos</h2>
+      <p class="section-sub">Programas de fidelización, alianzas y responsabilidad social que forman parte de nuestra identidad.</p>
+    </div>
+
+    <div class="proy-grid">
+
+      <div class="proy-card">
+        <img src="https://images.pexels.com/photos/6684796/pexels-photo-6684796.jpeg?auto=compress&cs=tinysrgb&w=800" alt="The Coffee Cup Card">
+        <div class="proy-content">
+          <h4>The Coffee Cup Card</h4>
+          <a href="#!">Ver reglamento →</a>
+        </div>
+      </div>
+
+      <div class="proy-card">
+        <img src="https://images.pexels.com/photos/33175648/pexels-photo-33175648.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Alianzas">
+        <div class="proy-content">
+          <h4>Alianzas</h4>
+          <a href="https://thecoffeecup.com.sv/frontend/alianzas.php">Leer más →</a>
+        </div>
+      </div>
+
+      <div class="proy-card">
+        <img src="https://images.pexels.com/photos/33963829/pexels-photo-33963829.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Responsabilidad Social Empresarial">
+        <div class="proy-content">
+          <h4>Responsabilidad Social</h4>
+          <a href="#!">Leer más →</a>
+        </div>
+      </div>
+
+      <div class="proy-card">
+        <img src="https://images.pexels.com/photos/13819623/pexels-photo-13819623.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Curiosidades del café">
+        <div class="proy-content">
+          <h4>Curiosidades del café</h4>
+          <a href="https://thecoffeecup.com.sv/frontend/curiosidades.php">Leer más →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== CTA BAND ===================== -->
+  <div class="cta-band">
+    <h3>Encuentra la sucursal The Coffee Cup más cercana a ti.</h3>
+    <a href="https://thecoffeecup.com.sv/frontend/sucursales.php" class="btn btn-primary">Ver sucursales</a>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="footer">
+    <div class="footer-grid">
+
+      <div>
+        <img src="data:image/png;base64,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" alt="The Coffee Cup">
+        <p>Café 100% salvadoreño, tostado con tradición desde nuestras montañas hasta tu taza. Una experiencia que nace del cariño de Doña Leyla de Quirós.</p>
+        <div class="social-row">
+          <a href="https://www.facebook.com/THE-COFFEE-CUP-201853386468/" aria-label="Facebook">f</a>
+          <a href="https://twitter.com/thecoffeecup_sv" aria-label="Twitter">x</a>
+          <a href="https://www.instagram.com/thecoffeecup_sv/" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+
+      <div>
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="https://thecoffeecup.com.sv/frontend/noticias.php">Noticias</a></li>
+          <li><a href="https://thecoffeecup.com.sv/frontend/promociones.php">Promociones</a></li>
+          <li><a href="https://thecoffeecup.com.sv/frontend/sucursales.php">Sucursales</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Empresa</h5>
+        <ul>
+          <li><a href="https://thecoffeecup.com.sv/frontend/nuestra_historia.php">Nuestra historia</a></li>
+          <li><a href="https://thecoffeecup.com.sv/frontend/adn_leyla.php">ADN de Doña Leyla</a></li>
+          <li><a href="https://thecoffeecup.com.sv/frontend/contactanos.php#franquicia">Adquiere una franquicia</a></li>
+          <li><a href="https://thecoffeecup.com.sv/frontend/contactanos.php">Contáctanos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li>Km 13 1/2, Autopista Comalapa, San Marcos</li>
+          <li>(503) 2507 1300</li>
+          <li>info@qualitygrains.com.sv</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>Copyright © 2026 The Coffee Cup. Todos los derechos reservados.</span>
+      <span>Rediseño front-end — Reto IA · Guía de Laboratorio Nº1</span>
+    </div>
+  </footer>
+
+  <script>
+    // Header con fondo al hacer scroll
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Menú hamburguesa (móvil)
+    const burger = document.getElementById('burgerBtn');
+    const nav = document.getElementById('mainNav');
+    burger.addEventListener('click', () => nav.classList.toggle('open'));
+    nav.querySelectorAll('a').forEach(link =>
+      link.addEventListener('click', () => nav.classList.remove('open'))
+    );
+  </script>
+
+</body>
+</html>
