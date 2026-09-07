@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guías de Desarrollo Web I</title>
+    
+    <style>
+        :root {
+            --bg-body: #0f172a;
+            --card-bg: #1e293b;
+            --card-inner: #334155;
+            --accent-blue: #38bdf8;
+            --accent-hover: #0284c7;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #475569;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Encabezado principal */
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 2px solid var(--border-color);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .titulo-portada {
+            margin: 0;
+            font-size: 2.2rem;
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        .datos-estudiante {
+            margin-top: 10px;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+        }
+
+        /* Contenedor principal */
+        main {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .card-guia {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .titulo-guia {
+            margin-top: 0;
+            font-size: 1.7rem;
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 10px;
+            color: var(--accent-blue);
+        }
+
+        /* Lista de ejercicios */
+        .subtitulo-bloque {
+            font-size: 1.2rem;
+            color: #e2e8f0;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .lista-ejercicios {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .enlace-ejercicio {
+            display: block;
+            background-color: var(--card-inner);
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            border-left: 4px solid var(--accent-blue);
+            transition: all 0.25s ease-in-out;
+        }
+
+        .enlace-ejercicio:hover {
+            background-color: var(--accent-hover);
+            transform: translateX(6px);
+            color: #ffffff;
+        }
+
+        /* Sección Reto IA */
+        .seccion-reto-ia {
+            margin-top: 30px;
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px dashed var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .titulo-reto {
+            margin-top: 0;
+            font-size: 1.3rem;
+            color: #f59e0b; /* Tono ámbar para destacar */
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="titulo-portada">Guías de Desarrollo Web</h1>
+        <p class="datos-estudiante">José Mario Sandoval Rodríguez - 20255665</p>
+    </header>
+    <main>
+        
+        <!-- ================= GUÍA 1 ================= -->
+        <section class="card-guia" id="guia-1">
+            <h2 class="titulo-guia">Guía 1</h2>
+            
+            <h3 class="subtitulo-bloque">Ejercicios de la Práctica</h3>
+            <ul class="lista-ejercicios">
+                <li>
+                    <a class="enlace-ejercicio" href="Guia1/estilos_embebidos.html">Ejercicio 1 - Estilos embebidos</a>
+                </li>
+                <li>
+                    <a class="enlace-ejercicio" href="Guia1/ejemplo2.htm">Ejercicio 2 - Ejemplo 2</a>
+                </li>
+                <li>
+                    <a class="enlace-ejercicio" href="Guia1/paises.htm">Ejercicio 3 - Países</a>
+                </li>
+                <li>
+                    <a class="enlace-ejercicio" href="Guia1/serie_fav.html">Ejercicio 4 - Mi serie favorita - WandaVision</a>
+                </li>
+            </ul>
+
+            <div class="seccion-reto-ia" id="reto-ia-guia1">
+                <h3 class="titulo-reto">Reto IA</h3>
+                
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Guías de Laboratorio - Desarrollo Web I - José Mario Sandoval Rodríguez</p>
+    </footer>
+
+</body>
+</html>
