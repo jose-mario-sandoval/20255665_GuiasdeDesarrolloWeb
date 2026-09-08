@@ -116,6 +116,84 @@
             font-size: 1.3rem;
             color: #f59e0b;
         }
+
+        .enlace-reto {
+            border-left-color: #f59e0b;
+        }
+
+        .enlace-reto:hover {
+            background-color: #d97706;
+        }
+
+        .item-reto {
+            margin-bottom: 30px;
+        }
+
+        .preview-reto {
+            width: 100%;
+            max-width: 850px;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .tabla-contenedor {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tabla-aprendizaje {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: left;
+            background-color: #1e293b;
+        }
+
+        .tabla-aprendizaje th, 
+        .tabla-aprendizaje td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tabla-aprendizaje th {
+            background-color: #0f172a;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .tabla-aprendizaje tr:nth-child(even) {
+            background-color: rgba(51, 65, 85, 0.3);
+        }
+
+        .tabla-aprendizaje tr:hover {
+            background-color: rgba(56, 189, 248, 0.08);
+        }
+
+        .contenedor-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: #000;
+            margin-top: 15px;
+        }
+
+        .contenedor-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
         
         footer {
             text-align: center;
@@ -156,6 +234,185 @@
             <div class="seccion-reto-ia" id="reto-ia-guia1">
                 <h3 class="titulo-reto">Reto IA</h3>
 
+                <div class="item-reto">
+                    <a class="enlace-ejercicio enlace-reto" href="Guia1/thecoffeecup_original.html" target="_blank">The Coffee Cup - sin cambios</a>
+                    <img class="preview-reto" src="/img/TheCoffeCupSin.png" alt="The Coffee Cup original sin cambios">
+                </div>
+
+                <div class="item-reto">
+                    <a class="enlace-ejercicio enlace-reto" href="Guia1/thecoffeecup_sencillo.html" target="_blank">The Coffee Cup - prompt sencillo</a>
+                    <img class="preview-reto" src="/img/TheCoffeCupSencillo.png" alt="The Coffee Cup rediseño prompt sencillo">
+                </div>
+
+                <div class="item-reto">
+                    <a class="enlace-ejercicio enlace-reto" href="Guia1/thecoffeecup_completo.html" target="_blank">The Coffee Cup - prompt completo</a>
+                    <img class="preview-reto" src="/img/TheCoffeCupCompleto.png" alt="The Coffee Cup rediseño prompt completo">
+                </div>
+
+                <h4 class="subtitulo-bloque">Análisis de aprendizaje por IA</h4>
+                <div class="tabla-contenedor">
+                    <table class="tabla-aprendizaje">
+                        <thead>
+                            <tr>
+                                <th>Visto en clase</th>
+                                <th>Función</th>
+                                <th>Aprendido por la IA</th>
+                                <th>Función</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>color</td>
+                                <td>Define el color del texto</td>
+                                <td>:root / var()</td>
+                                <td>Crea variables reutilizables para colores, tamaños, etc.</td>
+                            </tr>
+                            <tr>
+                                <td>background-color</td>
+                                <td>Define el color de fondo</td>
+                                <td>box-shadow</td>
+                                <td>Agrega sombra alrededor de un elemento</td>
+                            </tr>
+                            <tr>
+                                <td>font-family</td>
+                                <td>Define el tipo de letra</td>
+                                <td>border-radius</td>
+                                <td>Redondea las esquinas de un elemento</td>
+                            </tr>
+                            <tr>
+                                <td>font-size</td>
+                                <td>Define el tamaño de letra</td>
+                                <td>transition</td>
+                                <td>Suaviza el cambio entre dos estados (animación)</td>
+                            </tr>
+                            <tr>
+                                <td>font-weight</td>
+                                <td>Define el grosor de la letra</td>
+                                <td>transform</td>
+                                <td>Escala, rota o mueve un elemento</td>
+                            </tr>
+                            <tr>
+                                <td>font-style</td>
+                                <td>Define si el texto es cursiva/normal</td>
+                                <td>display: flex</td>
+                                <td>Alinea elementos en fila o columna fácilmente</td>
+                            </tr>
+                            <tr>
+                                <td>text-align</td>
+                                <td>Alinea el texto (izq/centro/der)</td>
+                                <td>justify-content / align-items</td>
+                                <td>Distribuyen y alinean elementos dentro de un flex/grid</td>
+                            </tr>
+                            <tr>
+                                <td>line-height</td>
+                                <td>Define el interlineado</td>
+                                <td>flex-wrap / gap</td>
+                                <td>Permite saltos de línea y da espacio entre elementos</td>
+                            </tr>
+                            <tr>
+                                <td>text-decoration</td>
+                                <td>Subraya, tacha el texto</td>
+                                <td>display: grid</td>
+                                <td>Crea una cuadrícula de filas y columnas</td>
+                            </tr>
+                            <tr>
+                                <td>text-transform</td>
+                                <td>Cambia mayúsculas/minúsculas</td>
+                                <td>grid-template-columns / repeat() / minmax() / auto-fit</td>
+                                <td>Define cuántas columnas tiene el grid y su tamaño flexible</td>
+                            </tr>
+                            <tr>
+                                <td>margin</td>
+                                <td>Espacio afuera del elemento</td>
+                                <td>position: fixed / sticky / absolute / relative</td>
+                                <td>Controla cómo se posiciona un elemento en la página</td>
+                            </tr>
+                            <tr>
+                                <td>width</td>
+                                <td>Define el ancho de un elemento</td>
+                                <td>z-index</td>
+                                <td>Controla qué elemento queda encima de otro</td>
+                            </tr>
+                            <tr>
+                                <td>Selector universal (*)</td>
+                                <td>Aplica estilo a todos los elementos</td>
+                                <td>opacity</td>
+                                <td>Controla la transparencia de un elemento</td>
+                            </tr>
+                            <tr>
+                                <td>Selector de etiqueta</td>
+                                <td>Aplica estilo a una etiqueta HTML específica</td>
+                                <td>backdrop-filter</td>
+                                <td>Difumina el fondo detrás de un elemento</td>
+                            </tr>
+                            <tr>
+                                <td>Selector de clase (.clase)</td>
+                                <td>Aplica estilo a elementos con esa clase</td>
+                                <td>linear-gradient()</td>
+                                <td>Crea un degradado de colores</td>
+                            </tr>
+                            <tr>
+                                <td>Selector de ID (#id)</td>
+                                <td>Aplica estilo a un solo elemento único</td>
+                                <td>@keyframes / animation</td>
+                                <td>Crea animaciones personalizadas paso a paso</td>
+                            </tr>
+                            <tr>
+                                <td>Estilos embebidos (style="")</td>
+                                <td>Aplica estilo directo en la etiqueta HTML</td>
+                                <td>:hover / ::before / ::after</td>
+                                <td>Cambia el estilo al pasar el mouse / agrega contenido decorativo</td>
+                            </tr>
+                            <tr>
+                                <td>Etiqueta &lt;style&gt;</td>
+                                <td>Define estilos dentro del head del HTML</td>
+                                <td>object-fit</td>
+                                <td>Controla cómo se ajusta una imagen dentro de su contenedor</td>
+                            </tr>
+                            <tr>
+                                <td>Comentarios /* */</td>
+                                <td>Explica el código sin afectar el resultado</td>
+                                <td>clamp()</td>
+                                <td>Define un valor que se adapta entre un mínimo y máximo</td>
+                            </tr>
+                            <tr>
+                                <td>&lt;link rel="stylesheet" href=""&gt;</td>
+                                <td>Enlaza un archivo CSS externo</td>
+                                <td>@media (responsive)</td>
+                                <td>Aplica estilos distintos según el tamaño de pantalla</td>
+                            </tr>
+                            <tr>
+                                <td>box-sizing: border-box</td>
+                                <td>Incluye el padding y borde dentro del ancho total</td>
+                                <td>scroll-behavior: smooth</td>
+                                <td>Hace que el scroll se mueva suavemente</td>
+                            </tr>
+                            <tr>
+                                <td>filter</td>
+                                <td>Aplica efectos visuales (brillo, invertir colores, etc.)</td>
+                                <td>letter-spacing</td>
+                                <td>Controla el espacio entre letras</td>
+                            </tr>
+                            <tr>
+                                <td>overflow / white-space</td>
+                                <td>Controla si el contenido se corta o se mantiene en una línea</td>
+                                <td>inset</td>
+                                <td>Define top/right/bottom/left en una sola propiedad</td>
+                            </tr>
+                            <tr>
+                                <td>content (pseudo-elementos)</td>
+                                <td>Inserta contenido decorativo sin usar HTML</td>
+                                <td>JavaScript: addEventListener, classList.toggle</td>
+                                <td>Detecta eventos (clic, scroll) y cambia clases dinámicamente</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 class="subtitulo-bloque">Video Explicativo</h4>
+                <div class="contenedor-video">
+                    <iframe src="https://www.youtube.com/embed/" title="Video explicativo - Reto IA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
         </section>
 
