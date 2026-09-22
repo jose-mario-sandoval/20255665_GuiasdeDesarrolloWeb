@@ -211,7 +211,7 @@ h1 {
   margin-top: 10px;
 }
 
-a[href="/index.html"] {
+a[href="../index.html"] {
   display: inline-block;
   color: var(--color-dorado);
   text-decoration: none;
@@ -222,12 +222,6 @@ a[href="/index.html"] {
   border-radius: 20px;
   transition: all 0.25s ease;
   width: fit-content;
-}
-
-a[href="index.html"]:hover {
-  background-color: var(--color-dorado);
-  color: var(--fondo-principal);
-  transform: translateX(4px);
 }
 
 .pie-pagina {
