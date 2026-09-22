@@ -211,7 +211,7 @@ h1 {
   margin-top: 10px;
 }
 
-a[href="index.html"] {
+a[href="/index.html"] {
   display: inline-block;
   color: var(--color-dorado);
   text-decoration: none;
