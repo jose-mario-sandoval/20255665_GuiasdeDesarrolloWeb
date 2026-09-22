@@ -1,0 +1,276 @@
+/* ===== Tokens de diseño (Refero design.md) ===== */
+:root {
+  --color-bone: #f2f1ed;
+  --color-paper-white: #ffffff;
+  --color-cocoa: #3b3429;
+  --color-ink: #000000;
+  --color-stone: #646464;
+  --color-ash: #b4aeac;
+
+  --font-goudy-old-style: 'Goudy Old Style', Georgia, serif;
+  --font-system-sans-ui-chrome: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, ui-sans-serif, system-ui, sans-serif;
+
+  --text-caption: 12px;
+  --text-body-sm: 14px;
+  --text-body: 16px;
+  --text-subheading: 20px;
+  --text-heading-sm: 26px;
+  --text-heading: 40px;
+  --text-display: 56px;
+
+  --font-weight-regular: 400;
+
+  --spacing-6: 6px;
+  --spacing-12: 12px;
+  --spacing-24: 24px;
+  --spacing-48: 48px;
+  --spacing-96: 96px;
+  --spacing-120: 120px;
+  --page-max-width: 1200px;
+  --card-padding: 24px;
+  --element-gap: 12px;
+
+  --radius-md: 5px;
+  --radius-tags: 5px;
+  --radius-cards: 5px;
+  --radius-inputs: 5px;
+  --radius-buttons: 5px;
+
+  --surface-bone: #f2f1ed;
+  --surface-paper-white: #ffffff;
+  --surface-cocoa: #3b3429;
+  --surface-ink: #000000;
+}
+
+/* ===== Reset base ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--surface-bone);
+  color: var(--color-cocoa);
+  font-family: var(--font-system-sans-ui-chrome);
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-goudy-old-style);
+  color: var(--color-cocoa);
+  font-weight: var(--font-weight-regular);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== Header (idéntico a Indez / Menu) ===== */
+.site-header {
+  background-color: var(--surface-paper-white);
+  border-bottom: 1px solid var(--color-ash);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-24);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+}
+
+.brand {
+  font-family: var(--font-goudy-old-style);
+  font-size: var(--text-subheading);
+  color: var(--color-cocoa);
+}
+
+.brand span {
+  color: var(--color-stone);
+}
+
+.main-nav {
+  display: flex;
+  gap: var(--spacing-24);
+}
+
+.main-nav a {
+  font-size: var(--text-body-sm);
+  color: var(--color-stone);
+  padding-bottom: var(--spacing-6);
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: var(--color-cocoa);
+}
+
+.main-nav a.active {
+  color: var(--color-cocoa);
+  border-bottom-color: var(--color-cocoa);
+}
+
+/* ===== Encabezado editorial de contacto ===== */
+.contact-intro {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-96) var(--spacing-24) var(--spacing-48);
+}
+
+.hero-kicker {
+  font-size: var(--text-body-sm);
+  color: var(--color-stone);
+  margin-bottom: var(--spacing-12);
+}
+
+.contact-intro h1 {
+  font-size: var(--text-display);
+  line-height: 1.1;
+  margin-bottom: var(--spacing-24);
+}
+
+.contact-desc {
+  font-size: var(--text-body);
+  color: var(--color-stone);
+  max-width: 62ch;
+}
+
+/* ===== Layout de dos columnas ===== */
+.contact-layout {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-48) var(--spacing-24) var(--spacing-96);
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--spacing-48);
+}
+
+.contact-layout h2 {
+  font-size: var(--text-heading-sm);
+  margin-bottom: var(--spacing-24);
+}
+
+/* ===== Columna del formulario ===== */
+.form-group {
+  margin-bottom: var(--spacing-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+label {
+  font-size: var(--text-body-sm);
+  color: var(--color-cocoa);
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-system-sans-ui-chrome);
+  font-size: var(--text-body);
+  color: var(--color-cocoa);
+  background-color: var(--surface-paper-white);
+  border: 1px solid var(--color-ash);
+  border-radius: var(--radius-inputs);
+  padding: var(--spacing-12);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-cocoa);
+  box-shadow: 0 0 0 3px rgba(59, 52, 41, 0.12);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.btn-submit {
+  background-color: var(--surface-cocoa);
+  color: var(--color-paper-white);
+  font-family: var(--font-system-sans-ui-chrome);
+  font-size: var(--text-body-sm);
+  border: none;
+  border-radius: var(--radius-buttons);
+  padding: var(--spacing-12) var(--spacing-24);
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.btn-submit:hover {
+  opacity: 0.88;
+  transform: scale(1.03);
+}
+
+/* ===== Columna de información ===== */
+.info-block {
+  border-top: 1px solid var(--color-ash);
+  padding: var(--spacing-24) 0;
+}
+
+.info-block:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.info-block h3 {
+  font-size: var(--text-subheading);
+  margin-bottom: var(--spacing-12);
+}
+
+.info-block p {
+  font-size: var(--text-body-sm);
+  color: var(--color-stone);
+}
+
+.branch-list {
+  list-style: none;
+  font-size: var(--text-body-sm);
+  color: var(--color-stone);
+}
+
+.branch-list li {
+  padding: var(--spacing-6) 0;
+  border-bottom: 1px solid var(--color-ash);
+}
+
+.branch-list li:last-child {
+  border-bottom: none;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  background-color: var(--surface-cocoa);
+  color: var(--color-bone);
+  text-align: center;
+  padding: var(--spacing-48) var(--spacing-24);
+}
+
+.site-footer p {
+  font-size: var(--text-body-sm);
+}
+
+.site-footer .credits {
+  color: var(--color-ash);
+  font-size: var(--text-caption);
+  margin-top: var(--spacing-6);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 860px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+  .header-inner {
+    flex-direction: column;
+    gap: var(--spacing-12);
+  }
+}
