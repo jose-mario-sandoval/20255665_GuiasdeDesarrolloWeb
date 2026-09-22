@@ -1,4 +1,4 @@
-/* ===== Tokens de diseño (Refero design.md) ===== */
+/* ===== Tokens de diseño — Aplós Style Reference (DESIGN.md) ===== */
 :root {
   /* Colors */
   --color-bone: #f2f1ed;
@@ -7,22 +7,23 @@
   --color-ink: #000000;
   --color-stone: #646464;
   --color-ash: #b4aeac;
+  --color-border: #e5e3df; /* borde de tarjetas y barras, referido en Components del design.md */
 
-  /* Typography — Font Families */
-  --font-goudy-old-style: 'Goudy Old Style', Georgia, serif;
-  --font-system-sans-ui-chrome: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, ui-sans-serif, system-ui, sans-serif;
+  /* Typography — Font Families (Goudy Old Style sustituido por Playfair Display vía Google Fonts) */
+  --font-goudy-old-style: 'Playfair Display', 'Goudy Old Style', Georgia, serif;
+  --font-system-sans-ui-chrome: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* Typography — Scale */
-  --text-caption: 12px;
-  --text-body-sm: 14px;
-  --text-body: 16px;
-  --text-subheading: 20px;
-  --text-heading-sm: 26px;
-  --text-heading: 40px;
-  --text-display: 56px;
+  /* Typography — Scale (tamaño / line-height / letter-spacing) */
+  --text-caption: 12px;      --leading-caption: 1.4;      --tracking-caption: 0px;
+  --text-body-sm: 14px;      --leading-body-sm: 1.5;      --tracking-body-sm: 0px;
+  --text-body: 16px;         --leading-body: 1.5;         --tracking-body: 0px;
+  --text-subheading: 20px;   --leading-subheading: 1.3;   --tracking-subheading: -0.2px;
+  --text-heading-sm: 26px;   --leading-heading-sm: 1.08;  --tracking-heading-sm: -0.31px;
+  --text-heading: 40px;      --leading-heading: 1.05;     --tracking-heading: -0.48px;
+  --text-display: 56px;      --leading-display: 1.05;     --tracking-display: -0.67px;
 
-  /* Typography — Weights */
   --font-weight-regular: 400;
+  --font-weight-medium: 500;
 
   /* Spacing & Layout */
   --spacing-6: 6px;
@@ -35,13 +36,14 @@
   --card-padding: 24px;
   --element-gap: 12px;
 
-  /* Radii & Surfaces */
+  /* Radii (único radio compartido, sin excepciones) */
   --radius-md: 5px;
   --radius-tags: 5px;
   --radius-cards: 5px;
   --radius-inputs: 5px;
   --radius-buttons: 5px;
 
+  /* Surfaces — jerarquía tonal fija: Bone -> Paper White -> Cocoa -> Ink */
   --surface-bone: #f2f1ed;
   --surface-paper-white: #ffffff;
   --surface-cocoa: #3b3429;
@@ -53,27 +55,26 @@
 
 body {
   background-color: var(--surface-bone);
-  color: var(--color-cocoa);
+  color: var(--color-ink);
   font-family: var(--font-system-sans-ui-chrome);
   font-size: var(--text-body);
-  line-height: 1.6;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
 }
 
 h1, h2, h3 {
   font-family: var(--font-goudy-old-style);
-  color: var(--color-cocoa);
-  font-weight: var(--font-weight-regular);
+  color: var(--color-ink);
+  font-weight: var(--font-weight-regular); /* Goudy Old Style: 400 únicamente, nunca bold */
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
 
-/* ===== Header ===== */
+/* ===== Header — Primary Navigation ===== */
 .site-header {
   background-color: var(--surface-paper-white);
-  border-bottom: 1px solid var(--color-ash);
+  border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -82,7 +83,8 @@ a {
 .header-inner {
   max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: var(--spacing-24);
+  min-height: 72px;
+  padding: 0 var(--spacing-24);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -91,125 +93,141 @@ a {
 
 .brand {
   font-family: var(--font-goudy-old-style);
-  font-size: var(--text-subheading);
-  color: var(--color-cocoa);
+  font-size: var(--text-heading-sm);
+  letter-spacing: var(--tracking-heading-sm);
+  color: var(--color-ink);
 }
 
 .brand span {
   color: var(--color-stone);
+  font-size: var(--text-body-sm);
+  font-family: var(--font-system-sans-ui-chrome);
 }
 
-.main-nav {
-  display: flex;
-  gap: var(--spacing-24);
-}
+.main-nav { display: flex; gap: var(--spacing-24); }
 
 .main-nav a {
   font-size: var(--text-body-sm);
-  color: var(--color-stone);
+  letter-spacing: var(--tracking-body-sm);
+  color: var(--color-ink);
   padding-bottom: var(--spacing-6);
   border-bottom: 2px solid transparent;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-.main-nav a:hover {
-  color: var(--color-cocoa);
-}
+.main-nav a:hover { color: var(--color-cocoa); }
 
 .main-nav a.active {
   color: var(--color-cocoa);
   border-bottom-color: var(--color-cocoa);
 }
 
-/* ===== Hero ===== */
+/* ===== Dark Hero Section (Ink #000000, full-bleed) ===== */
 .hero {
-  max-width: var(--page-max-width);
-  margin: 0 auto;
-  padding: var(--spacing-96) var(--spacing-24);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-48);
+  background-color: var(--surface-ink);
   animation: fadeInHero 1s ease both;
 }
 
 @keyframes fadeInHero {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+  max-width: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .hero-text {
   flex: 1;
+  max-width: calc(var(--page-max-width) / 2);
+  padding: var(--spacing-96) var(--spacing-48);
 }
 
 .hero-kicker {
-  font-size: var(--text-body-sm);
-  color: var(--color-stone);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-caption);
+  text-transform: uppercase;
+  color: var(--color-ash);
   margin-bottom: var(--spacing-12);
 }
 
 .hero h1 {
   font-size: var(--text-display);
-  line-height: 1.1;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-paper-white);
   margin-bottom: var(--spacing-24);
 }
 
 .hero-desc {
   font-size: var(--text-body);
-  color: var(--color-stone);
+  color: var(--color-ash);
   max-width: 46ch;
   margin-bottom: var(--spacing-24);
 }
 
-.btn-primary {
+/* Outlined CTA Button (Light) — fondo blanco sobre hero oscuro */
+.btn-cta-light {
   display: inline-block;
-  background-color: var(--surface-cocoa);
-  color: var(--color-paper-white);
+  background-color: var(--surface-paper-white);
+  color: var(--color-ink);
+  font-family: var(--font-system-sans-ui-chrome);
   font-size: var(--text-body-sm);
-  padding: var(--spacing-12) var(--spacing-24);
+  font-weight: var(--font-weight-medium);
+  padding: 9px 12px;
   border-radius: var(--radius-buttons);
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.btn-primary:hover {
-  opacity: 0.88;
+.btn-cta-light:hover {
+  opacity: 0.85;
   transform: translateY(-2px);
 }
 
 .hero-image {
   flex: 1;
-  min-height: 340px;
-  border-radius: var(--radius-md);
-  background-image: linear-gradient(160deg, var(--color-ash), var(--color-cocoa));
+  align-self: stretch;
 }
 
-/* ===== Secciones generales ===== */
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== Benefits Section Heading ===== */
 .tradition,
 .signature {
   max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: var(--spacing-96) var(--spacing-24);
+  padding: var(--spacing-120) var(--spacing-24);
 }
 
 .section-heading {
+  text-align: center;
   margin-bottom: var(--spacing-48);
 }
 
 .section-heading h2 {
   font-size: var(--text-heading);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
   margin-bottom: var(--spacing-12);
 }
 
 .section-heading p {
   color: var(--color-stone);
   font-size: var(--text-body);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
+/* ===== Benefit Cards (Light + Cocoa) ===== */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -217,51 +235,103 @@ a {
 }
 
 .card {
-  background-color: var(--surface-paper-white);
-  border: 1px solid var(--color-ash);
   border-radius: var(--radius-cards);
   padding: var(--card-padding);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  transition: transform 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 32px rgba(59, 52, 41, 0.14);
-}
+.card:hover { transform: translateY(-4px); }
 
 .card h3 {
   font-size: var(--text-heading-sm);
+  line-height: var(--leading-heading-sm);
+  letter-spacing: var(--tracking-heading-sm);
   margin-bottom: var(--spacing-12);
 }
 
 .card p {
   font-size: var(--text-body-sm);
+  margin-bottom: var(--spacing-24);
+}
+
+.card-number {
+  font-family: var(--font-system-sans-ui-chrome);
+  font-size: var(--text-body-sm);
+  letter-spacing: var(--tracking-body-sm);
+  position: absolute;
+  bottom: var(--card-padding);
+  left: var(--card-padding);
+}
+
+.card-light {
+  background-color: var(--surface-paper-white);
+  border: 1px solid var(--color-border);
+}
+
+.card-light p { color: var(--color-stone); }
+.card-light .card-number { color: var(--color-stone); }
+
+.card-cocoa {
+  background-color: var(--surface-cocoa);
+}
+
+.card-cocoa h3,
+.card-cocoa p,
+.card-cocoa .card-number { color: var(--color-paper-white); }
+
+/* ===== Product Collection Cards ===== */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-24);
+}
+
+.collection-card {
+  border-radius: var(--radius-cards);
+  overflow: hidden;
+  background-color: var(--surface-paper-white);
+  transition: transform 0.3s ease;
+}
+
+.collection-card:hover { transform: translateY(-4px); }
+
+.collection-image {
+  height: 260px;
+}
+
+.collection-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.collection-panel {
+  padding: var(--card-padding);
+}
+
+.collection-panel h3 {
+  font-size: var(--text-heading-sm);
+  line-height: var(--leading-heading-sm);
+  letter-spacing: var(--tracking-heading-sm);
+  margin-bottom: var(--spacing-6);
+}
+
+.collection-panel p {
+  font-size: var(--text-body-sm);
   color: var(--color-stone);
 }
 
-.product-image {
-  height: 140px;
-  border-radius: var(--radius-md);
-  margin-bottom: var(--spacing-12);
-  background-size: cover;
-  background-position: center;
-}
-
-.product-image.frozen { background-image: linear-gradient(160deg, var(--color-ash), var(--color-stone)); }
-.product-image.espresso { background-image: linear-gradient(160deg, var(--color-stone), var(--color-cocoa)); }
-.product-image.bakery { background-image: linear-gradient(160deg, var(--color-bone), var(--color-ash)); }
-
-/* ===== Footer ===== */
+/* ===== Footer — surface Ink (máximo contraste) ===== */
 .site-footer {
-  background-color: var(--surface-cocoa);
-  color: var(--color-bone);
+  background-color: var(--surface-ink);
+  color: var(--color-paper-white);
   text-align: center;
   padding: var(--spacing-48) var(--spacing-24);
 }
 
-.site-footer p {
-  font-size: var(--text-body-sm);
-}
+.site-footer p { font-size: var(--text-body-sm); }
 
 .site-footer .credits {
   color: var(--color-ash);
@@ -270,17 +340,11 @@ a {
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 860px) {
-  .hero {
-    flex-direction: column;
-    text-align: left;
-    padding: var(--spacing-48) var(--spacing-24);
-  }
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-  .header-inner {
-    flex-direction: column;
-    gap: var(--spacing-12);
-  }
+@media (max-width: 900px) {
+  .hero { flex-direction: column; }
+  .hero-text { max-width: none; padding: var(--spacing-48) var(--spacing-24); }
+  .hero-image img { min-height: 260px; }
+  .card-grid,
+  .collection-grid { grid-template-columns: 1fr; }
+  .header-inner { flex-direction: column; padding: var(--spacing-12) var(--spacing-24); gap: var(--spacing-12); }
 }

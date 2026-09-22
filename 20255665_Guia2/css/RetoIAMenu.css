@@ -1,4 +1,4 @@
-/* ===== Tokens de diseño (Refero design.md) ===== */
+/* ===== Tokens de diseño — Aplós Style Reference (DESIGN.md) ===== */
 :root {
   --color-bone: #f2f1ed;
   --color-paper-white: #ffffff;
@@ -6,19 +6,21 @@
   --color-ink: #000000;
   --color-stone: #646464;
   --color-ash: #b4aeac;
+  --color-border: #e5e3df;
 
-  --font-goudy-old-style: 'Goudy Old Style', Georgia, serif;
-  --font-system-sans-ui-chrome: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, ui-sans-serif, system-ui, sans-serif;
+  --font-goudy-old-style: 'Playfair Display', 'Goudy Old Style', Georgia, serif;
+  --font-system-sans-ui-chrome: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  --text-caption: 12px;
-  --text-body-sm: 14px;
-  --text-body: 16px;
-  --text-subheading: 20px;
-  --text-heading-sm: 26px;
-  --text-heading: 40px;
-  --text-display: 56px;
+  --text-caption: 12px;      --leading-caption: 1.4;      --tracking-caption: 0px;
+  --text-body-sm: 14px;      --leading-body-sm: 1.5;      --tracking-body-sm: 0px;
+  --text-body: 16px;         --leading-body: 1.5;         --tracking-body: 0px;
+  --text-subheading: 20px;   --leading-subheading: 1.3;   --tracking-subheading: -0.2px;
+  --text-heading-sm: 26px;   --leading-heading-sm: 1.08;  --tracking-heading-sm: -0.31px;
+  --text-heading: 40px;      --leading-heading: 1.05;     --tracking-heading: -0.48px;
+  --text-display: 56px;      --leading-display: 1.05;     --tracking-display: -0.67px;
 
   --font-weight-regular: 400;
+  --font-weight-medium: 500;
 
   --spacing-6: 6px;
   --spacing-12: 12px;
@@ -47,27 +49,25 @@
 
 body {
   background-color: var(--surface-bone);
-  color: var(--color-cocoa);
+  color: var(--color-ink);
   font-family: var(--font-system-sans-ui-chrome);
   font-size: var(--text-body);
-  line-height: 1.6;
+  line-height: var(--leading-body);
 }
 
 h1, h2, h3 {
   font-family: var(--font-goudy-old-style);
-  color: var(--color-cocoa);
+  color: var(--color-ink);
   font-weight: var(--font-weight-regular);
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
 
 /* ===== Header (idéntico a Indez) ===== */
 .site-header {
   background-color: var(--surface-paper-white);
-  border-bottom: 1px solid var(--color-ash);
+  border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -76,7 +76,8 @@ a {
 .header-inner {
   max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: var(--spacing-24);
+  min-height: 72px;
+  padding: 0 var(--spacing-24);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -85,30 +86,28 @@ a {
 
 .brand {
   font-family: var(--font-goudy-old-style);
-  font-size: var(--text-subheading);
-  color: var(--color-cocoa);
+  font-size: var(--text-heading-sm);
+  letter-spacing: var(--tracking-heading-sm);
+  color: var(--color-ink);
 }
 
 .brand span {
   color: var(--color-stone);
+  font-size: var(--text-body-sm);
+  font-family: var(--font-system-sans-ui-chrome);
 }
 
-.main-nav {
-  display: flex;
-  gap: var(--spacing-24);
-}
+.main-nav { display: flex; gap: var(--spacing-24); }
 
 .main-nav a {
   font-size: var(--text-body-sm);
-  color: var(--color-stone);
+  color: var(--color-ink);
   padding-bottom: var(--spacing-6);
   border-bottom: 2px solid transparent;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-.main-nav a:hover {
-  color: var(--color-cocoa);
-}
+.main-nav a:hover { color: var(--color-cocoa); }
 
 .main-nav a.active {
   color: var(--color-cocoa);
@@ -123,14 +122,16 @@ a {
 }
 
 .hero-kicker {
-  font-size: var(--text-body-sm);
+  font-size: var(--text-caption);
+  text-transform: uppercase;
   color: var(--color-stone);
   margin-bottom: var(--spacing-12);
 }
 
 .menu-intro h1 {
   font-size: var(--text-display);
-  line-height: 1.1;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
   margin-bottom: var(--spacing-24);
 }
 
@@ -140,16 +141,18 @@ a {
   max-width: 62ch;
 }
 
-/* ===== Categorías ===== */
+/* ===== Categorías (Section Divider = whitespace, hairline en Ink) ===== */
 .menu-category {
   max-width: var(--page-max-width);
   margin: 0 auto;
   padding: var(--spacing-48) var(--spacing-24);
-  border-top: 1px solid var(--color-ash);
+  border-top: 1px solid var(--color-border);
 }
 
 .menu-category h2 {
   font-size: var(--text-heading-sm);
+  line-height: var(--leading-heading-sm);
+  letter-spacing: var(--tracking-heading-sm);
   margin-bottom: var(--spacing-24);
 }
 
@@ -159,10 +162,15 @@ a {
   gap: var(--spacing-24);
 }
 
-/* ===== Tarjetas de producto ===== */
+/* ===== Tarjetas de producto (Benefit Card - Light) =====
+   Nota: el enunciado del laboratorio (Prompt 2) exige explícitamente una
+   transición de transform + box-shadow ajustable en vivo durante el video.
+   Se mantiene una sombra tonal muy sutil (negro a baja opacidad) para
+   cumplir ese requisito sin introducir color, respetando en lo posible
+   la regla del design.md de evitar elevación por blur. */
 .product-card {
   background-color: var(--surface-paper-white);
-  border: 1px solid var(--color-ash);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-cards);
   padding: var(--card-padding);
   display: flex;
@@ -173,11 +181,13 @@ a {
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 22px 38px rgba(59, 52, 41, 0.16);
+  box-shadow: 0 20px 32px rgba(0, 0, 0, 0.12);
 }
 
 .product-card h3 {
   font-size: var(--text-subheading);
+  line-height: var(--leading-subheading);
+  letter-spacing: var(--tracking-subheading);
 }
 
 .product-card p {
@@ -187,23 +197,21 @@ a {
 }
 
 .price {
+  font-family: var(--font-system-sans-ui-chrome);
   font-size: var(--text-body);
-  color: var(--color-cocoa);
+  color: var(--color-ink);
   margin-top: var(--spacing-12);
-  font-weight: var(--font-weight-regular);
 }
 
-/* ===== Footer ===== */
+/* ===== Footer — surface Ink ===== */
 .site-footer {
-  background-color: var(--surface-cocoa);
-  color: var(--color-bone);
+  background-color: var(--surface-ink);
+  color: var(--color-paper-white);
   text-align: center;
   padding: var(--spacing-48) var(--spacing-24);
 }
 
-.site-footer p {
-  font-size: var(--text-body-sm);
-}
+.site-footer p { font-size: var(--text-body-sm); }
 
 .site-footer .credits {
   color: var(--color-ash);
@@ -212,12 +220,7 @@ a {
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 860px) {
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
-  .header-inner {
-    flex-direction: column;
-    gap: var(--spacing-12);
-  }
+@media (max-width: 900px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .header-inner { flex-direction: column; padding: var(--spacing-12) var(--spacing-24); gap: var(--spacing-12); }
 }
