@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucursales TITULOamp; Contacto | The Coffee Cup El Salvador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contacto.css">
+</head>
+<body>
+    <header class="hero hero-pagina">
+        <nav class="navbar" aria-label="Navegación principal">
+            <a class="logo" href="index.html">The Coffee Cup</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="menu.html" >Menú &amp; Bebidas</a></li>
+                <li><a href="contacto.html" class="activo" aria-current="page">Sucursales &amp; Contacto</a></li>
+            </ul>
+            <a class="btn btn-claro btn-nav" href="menu.html">Pedir en línea</a>
+        </nav>
+        <div class="hero-contenido">
+            <p class="caption">Visítanos o escríbenos</p>
+            <h1>Sucursales &amp; contacto</h1>
+            <p class="hero-sub">Encuentra la sucursal más cercana o déjanos un mensaje.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="seccion" id="sucursales">
+            <div class="contenedor">
+                <div class="seccion-titulo">
+                    <h2>Sucursales</h2>
+                    <p>Direcciones de ejemplo para esta práctica.</p>
+                </div>
+                <div class="grid-tarjetas">
+                    <article class="tarjeta tarjeta-info"><div class="tarjeta-cuerpo">
+                        <h3>San Salvador Centro</h3>
+                        <p>Calle Rubén Darío, San Salvador</p>
+                        <p>Tel. 2222-0001</p>
+                        <p class="precio">L–S 7:00–21:00</p>
+                    </div></article>
+                    <article class="tarjeta tarjeta-info"><div class="tarjeta-cuerpo">
+                        <h3>Escalón</h3>
+                        <p>Paseo General Escalón, San Salvador</p>
+                        <p>Tel. 2222-0002</p>
+                        <p class="precio">L–S 7:00–21:00</p>
+                    </div></article>
+                    <article class="tarjeta tarjeta-info"><div class="tarjeta-cuerpo">
+                        <h3>Santa Tecla</h3>
+                        <p>Avenida Manuel Gallardo, Santa Tecla</p>
+                        <p>Tel. 2222-0003</p>
+                        <p class="precio">L–D 8:00–20:00</p>
+                    </div></article>
+                    <article class="tarjeta tarjeta-info"><div class="tarjeta-cuerpo">
+                        <h3>Antiguo Cuscatlán</h3>
+                        <p>Boulevard Merliot, Antiguo Cuscatlán</p>
+                        <p>Tel. 2222-0004</p>
+                        <p class="precio">L–D 8:00–20:00</p>
+                    </div></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion seccion-alt" id="formulario">
+            <div class="contenedor contacto">
+                <div class="contacto-texto">
+                    <h2>Escríbenos</h2>
+                    <p>¿Pedidos para eventos, cotizaciones o comentarios? Responderemos en un máximo de 24 horas hábiles.</p>
+                    <p>Correo: hola@thecoffeecup.example</p>
+                </div>
+                <form class="formulario" action="#" method="post">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo" required>
+
+                    <label for="sucursal">Sucursal</label>
+                    <select id="sucursal" name="sucursal">
+                        <option>San Salvador Centro</option>
+                        <option>Escalón</option>
+                        <option>Santa Tecla</option>
+                        <option>Antiguo Cuscatlán</option>
+                    </select>
+
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+                    <button type="submit" class="btn btn-oscuro">Enviar mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="contenedor footer-grid">
+            <div>
+                <p class="logo">The Coffee Cup</p>
+                <p class="footer-nota">Café salvadoreño de altura, tostado artesanalmente.</p>
+            </div>
+            <div>
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="menu.html">Menú &amp; Bebidas</a></li>
+                    <li><a href="contacto.html">Sucursales &amp; Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Horarios</h4>
+                <ul>
+                    <li>Lunes a sábado: 7:00 a. m. – 9:00 p. m.</li>
+                    <li>Domingo: 8:00 a. m. – 8:00 p. m.</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Redes sociales</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+                    <li><a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="https://www.tiktok.com" target="_blank" rel="noopener">TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-legal">© 2026 The Coffee Cup El Salvador. Todos los derechos reservados. Desarrollado para Guía 2 - ESEN 2026</p>
+    </footer>
+</body>
+</html>

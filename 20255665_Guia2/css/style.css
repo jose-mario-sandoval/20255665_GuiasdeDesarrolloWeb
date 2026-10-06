@@ -1,252 +1,359 @@
-/* Variables */
+/* ==========================================================
+   THE COFFEE CUP EL SALVADOR · style.css
+   Sistema de diseño: "Amrit Palace" (Refero) · design.md
+   Mobile first · Flexbox + CSS Grid
+   ========================================================== */
+
+/* ===== 1. VARIABLES ===== */
 :root {
-  --color-fondo: #05070a;
-  --color-superficie: #0f1720;
-  --color-superficie-alt: #141d28;
-  --color-dorado: #d1a954;
-  --color-texto: #f2f0ea;
-  --color-texto-tenue: #aab2bf;
-  --color-borde: rgba(255, 255, 255, 0.08);
-  --fuente-titulos: Georgia, "Times New Roman", serif;
-  --fuente-texto: "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    /* Colores (design.md) */
+    --color-parchment: #d8cbb8;
+    --color-linen: #bfb4a3;
+    --color-warm-stone: #b6ab9c;
+    --color-walnut: #978e81;
+    --color-espresso: #615b53;
+    --color-onyx-warm: #2c2c2c;
+    --color-midnight-roast: #292622;
+    --color-saffron-glow: #d49653;
+
+    /* Tipografía */
+    --font-titulos: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --font-texto: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+    /* Forma */
+    --radius-boton: 3px;
+    --radius-tarjeta: 0px;
+    --ancho-max: 1200px;
+
+    /* ===== VARIABLES DE ANIMACIÓN (para la demo en vivo) ===== */
+    --duracion-transicion: 0.35s;
+    --curva-transicion: cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-* {
-  box-sizing: border-box;
-}
+/* ===== 2. RESET Y BASE ===== */
+*, *::before, *::after { box-sizing: border-box; }
 
-html {
-  font-size: 20px;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  font-family: var(--fuente-texto);
+    margin: 0;
+    background-color: var(--color-parchment);
+    color: var(--color-onyx-warm);
+    font-family: var(--font-texto);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
 }
 
-/* 
-Respuesta a la pregunta del ejercicio 15:
-Considerando que el elemento html tiene font-size: 20px (1rem = 20px):
-- 3.4rem  = 3.4  * 20px = 68px
-- 1.4rem  = 1.4  * 20px = 28px
-- 0.95rem = 0.95 * 20px = 19px
-- 0.7rem  = 0.7  * 20px = 14px
-*/
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+ul { list-style: none; margin: 0; padding: 0; }
 
-.wrapper {
-  margin: 0 auto;
-  width: 86%;
-  max-width: 860px;
+h1, h2, h3 {
+    font-family: var(--font-titulos);
+    font-weight: 300; /* nunca en negrita */
+    margin: 0;
 }
 
+:focus-visible {
+    outline: 2px solid var(--color-saffron-glow);
+    outline-offset: 3px;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: var(--ancho-max);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.caption {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: -0.012em;
+    margin: 0 0 20px;
+}
+
+/* ===== 3. BOTONES (ghost / outlined) ===== */
+.btn {
+    display: inline-block;
+    padding: 16px 24px;
+    border: 1px solid currentColor;
+    border-radius: var(--radius-boton);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    text-align: center;
+    background: transparent;
+    transition:
+        background-color var(--duracion-transicion) var(--curva-transicion),
+        color var(--duracion-transicion) var(--curva-transicion),
+        border-color var(--duracion-transicion) var(--curva-transicion),
+        transform var(--duracion-transicion) var(--curva-transicion);
+}
+
+/* Sobre fondo oscuro (hero) */
+.btn-claro { color: var(--color-parchment); }
+.btn-claro:hover {
+    background-color: var(--color-parchment);
+    color: var(--color-onyx-warm);
+    transform: translateY(-3px);
+}
+
+/* Sobre fondo claro */
+.btn-oscuro { color: var(--color-onyx-warm); }
+.btn-oscuro:hover {
+    background-color: var(--color-onyx-warm);
+    color: var(--color-parchment);
+    transform: translateY(-3px);
+}
+
+.btn:active { transform: translateY(0); }
+
+/* ===== 4. HERO + NAVBAR ===== */
 .hero {
-  background-image:
-    linear-gradient(180deg, rgba(5, 7, 10, 0.35), rgba(5, 7, 10, 0.95)),
-    url("../img/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 120px 20px 70px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-parchment);
+    background-color: var(--color-midnight-roast);
+    background-image:
+        linear-gradient(180deg, rgba(41, 38, 34, 0.55), rgba(41, 38, 34, 0.9)),
+        url("https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1800&q=70");
+    background-size: cover;
+    background-position: center;
 }
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px;
+}
+
+.logo {
+    font-family: var(--font-titulos);
+    font-weight: 300;
+    font-size: 26px;
+    letter-spacing: -0.006em;
+    text-decoration: none;
+    margin: 0;
+}
+
+.nav-links {
+    order: 3;              /* en móvil el menú baja a una segunda fila */
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+}
+
+.nav-links a {
+    display: inline-block;
+    padding: 6px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--duracion-transicion) var(--curva-transicion),
+                color var(--duracion-transicion) var(--curva-transicion);
+}
+
+.nav-links a:hover { border-bottom-color: var(--color-parchment); }
+.nav-links a.activo {
+    color: var(--color-saffron-glow);       /* estado activo: único uso del acento */
+    border-bottom-color: var(--color-saffron-glow);
+}
+
+.btn-nav { padding: 12px 18px; font-size: 13px; }
 
 .hero-contenido {
-  margin: 0 auto;
-  width: 86%;
-  max-width: 860px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 80px 20px 64px;
+    max-width: var(--ancho-max);
+    width: 100%;
+    margin: 0 auto;
 }
 
-.etiqueta {
-  display: inline-block;
-  color: var(--color-dorado);
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border: 1px solid var(--color-dorado);
-  border-radius: 20px;
-  padding: 5px 14px;
-  margin-bottom: 18px;
+.hero h1 {
+    font-size: clamp(44px, 11vw, 115px);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    max-width: 14ch;
 }
 
-h1 {
-  font-family: var(--fuente-titulos);
-  font-size: 3.4rem;
-  letter-spacing: 1px;
-  margin: 0;
+.hero-sub {
+    font-size: 15px;
+    max-width: 44ch;
+    margin: 28px 0 32px;
 }
 
-.tagline {
-  font-family: var(--fuente-titulos);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--color-texto-tenue);
-  margin: 14px 0 26px;
+.hero-acciones { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ===== ANIMACIÓN DE ENTRADA DEL HERO ===== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Selector de hijos: solo los span que son hijos directos de .badges */
-.badges > span {
-  display: inline-block;
-  font-size: 0.8rem;
-  color: var(--color-texto-tenue);
+.hero-contenido > * {
+    opacity: 0;
+    animation: fadeInUp 0.9s var(--curva-transicion) forwards;
+}
+.hero-contenido > :nth-child(1) { animation-delay: 0.1s; }
+.hero-contenido > :nth-child(2) { animation-delay: 0.25s; }
+.hero-contenido > :nth-child(3) { animation-delay: 0.45s; }
+.hero-contenido > :nth-child(4) { animation-delay: 0.6s; }
+
+/* ===== 5. SECCIONES ===== */
+.seccion { padding: 80px 0; }
+.seccion-alt { background-color: var(--color-linen); }
+
+.seccion h2 {
+    font-size: clamp(40px, 8vw, 69px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
 }
 
-/* Selector adyacente: separador entre insignias consecutivas */
-.badge + .badge {
-  margin-left: 12px;
-  padding-left: 12px;
-  border-left: 1px solid var(--color-borde);
+.seccion-titulo {
+    border-top: 1px solid var(--color-warm-stone);
+    padding-top: 24px;
+    margin-bottom: 40px;
+}
+.seccion-titulo p { margin: 16px 0 0; color: var(--color-espresso); max-width: 44ch; }
+
+/* ===== 6. TARJETAS DE CAFÉ ===== */
+.grid-tarjetas {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  background-color: var(--color-superficie);
-  border-bottom: 1px solid var(--color-borde);
+.tarjeta {
+    background-color: var(--color-parchment);
+    border: 1px solid var(--color-warm-stone);
+    border-radius: var(--radius-tarjeta);
+    overflow: hidden;
+    transition:
+        transform var(--duracion-transicion) var(--curva-transicion),
+        box-shadow var(--duracion-transicion) var(--curva-transicion),
+        border-color var(--duracion-transicion) var(--curva-transicion);
 }
 
-nav > a {
-  color: var(--color-texto-tenue);
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  text-decoration: none;
-  padding: 18px 22px;
-  border-bottom: 3px solid transparent;
+.tarjeta:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 14px 28px rgba(41, 38, 34, 0.22);
+    border-color: var(--color-espresso);
 }
 
-nav a:hover {
-  color: var(--color-dorado);
-  border-bottom-color: var(--color-dorado);
+.tarjeta img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background-color: var(--color-linen);
 }
 
-nav a:active {
-  color: var(--color-texto);
+.tarjeta-cuerpo { padding: 28px; }
+.tarjeta h3 { font-size: 30px; line-height: 1; letter-spacing: -0.03em; }
+.tarjeta-cuerpo p { margin: 12px 0 0; color: var(--color-espresso); }
+.tarjeta .precio {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-warm-stone);
+    color: var(--color-onyx-warm);
+    font-weight: 700;
 }
 
-/* Bloques de contenido */
-.bloque { 
-  padding-top: 56px;
+/* ===== 7. NUESTRA HISTORIA ===== */
+.historia {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
 }
 
-h2 {
-  font-family: var(--fuente-titulos);
-  font-size: 1.4rem;
-  color: var(--color-dorado);
-  border-bottom: 1px solid var(--color-borde);
-  padding-bottom: 14px;
-  margin-bottom: 26px;
+.historia-texto p { color: var(--color-espresso); max-width: 52ch; margin: 24px 0 0; }
+.historia-texto .btn { margin-top: 32px; }
+
+.historia-imagen { margin: 0; }
+.historia-imagen img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background-color: var(--color-walnut);
 }
 
-/* Sinopsis: imagen y texto lado a lado con flexbox */
-.sinopsis-contenido {
-  display: flex;
-  gap: 28px;
-  align-items: flex-start;
+/* ===== 8. FOOTER ===== */
+.footer {
+    background-color: var(--color-onyx-warm);
+    color: var(--color-parchment);
+    padding: 64px 0 0;
 }
 
-.sinopsis-contenido img {
-  width: 45%;
-  border-radius: 10px;
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 36px;
 }
 
-.sinopsis-texto {
-  flex: 1;
+.footer h4 {
+    margin: 0 0 16px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--color-walnut);
 }
 
-/* Selector descendiente: cualquier párrafo dentro de un bloque */
-.bloque p {
-  color: var(--color-texto-tenue);
-  line-height: 1.75;
-  font-size: 0.95rem;
-  text-align: justify;
+.footer li { margin-bottom: 8px; font-size: 14px; }
+.footer a { text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+.footer-nota { color: var(--color-walnut); max-width: 28ch; margin: 12px 0 0; }
+
+.footer-legal {
+    margin: 56px 0 0;
+    padding: 24px 20px;
+    border-top: 1px solid var(--color-espresso);
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-walnut);
 }
 
-/* Ficha técnica */
-.ficha {
-  border-top: 1px solid var(--color-borde);
+/* ===== 9. RESPONSIVO ===== */
+@media (min-width: 640px) {
+    .grid-tarjetas { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Selector de hijos: solo las filas que son hijas directas de ficha */
-.ficha > div {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--color-borde);
+@media (min-width: 900px) {
+    .navbar { flex-wrap: nowrap; padding: 24px 48px; }
+    .nav-links { order: 0; width: auto; gap: 32px; }
+    .hero-contenido { padding: 80px 48px 80px; }
+    .contenedor { padding: 0 48px; }
+    .seccion { padding: 120px 0; }
+    .historia { grid-template-columns: 1fr 1fr; gap: 72px; }
+    .footer-grid { grid-template-columns: 1.4fr 1fr 1.2fr 1fr; }
 }
 
-/* Pseudo-clase nth-child con palabras clave, en vez de fórmulas 2n+1/2n */
-.ficha > div:nth-child(odd) {
-  background-color: var(--color-superficie);
+@media (min-width: 1100px) {
+    .grid-tarjetas { grid-template-columns: repeat(4, 1fr); }
 }
 
-.ficha > div:nth-child(even) {
-  background-color: var(--color-superficie-alt);
-}
-
-/* Pseudo-clase first-child: la primera fila se destaca con un acento */
-.ficha > div:first-child {
-  border-top: 2px solid var(--color-dorado);
-}
-
-.ficha dt {
-  color: var(--color-texto-tenue);
-  font-size: 0.85rem;
-}
-
-/* Selector descendiente: dd en cualquier nivel dentro de ficha */
-.ficha dd {
-  margin: 0;
-  font-size: 0.85rem;
-  font-weight: bold;
-}
-
-.mas-info {
-  font-size: 0.85rem;
-  margin-top: 16px;
-}
-
-/* Pseudo-clases de enlace: estado no visitado y visitado */
-.mas-info a:link {
-  color: var(--color-dorado);
-}
-
-.mas-info a:visited {
-  color: #9884ab;
-}
-
-.mas-info a:hover {
-  color: var(--color-texto);
-}
-
-/* Pie de página */
-footer {
-  color: var(--color-texto-tenue);
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  margin-top: 60px;
-  padding: 24px;
-  text-align: center;
-  border-top: 1px solid var(--color-borde);
-}
-
-/*21*/
-a[href="https://www.imdb.com"] {
-  padding: 3px 10px;
-  border: 1px solid var(--color-borde);
-  border-radius: 20px;
-}
-
-/*22*/
-.sinopsis-texto p:first-child::first-letter,
-.critica-texto p:first-child::first-letter {
-  color: var(--color-dorado);
-  font-family: var(--fuente-titulos);
-  font-size: 1.9rem;
-}
-
-/*23*/
-.wrapper > .bloque:first-child p:first-child::first-line {
-  text-decoration: underline;
-  text-decoration-color: var(--color-dorado);
+/* ===== 10. ACCESIBILIDAD: reducir movimiento ===== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0s !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .hero-contenido > * { opacity: 1; }
 }
