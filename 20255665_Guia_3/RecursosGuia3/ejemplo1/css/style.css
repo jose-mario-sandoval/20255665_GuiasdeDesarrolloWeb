@@ -1,0 +1,465 @@
+:root {
+  --color-texto: #342e29;
+  --color-fondo: #f5efe6;
+  --color-principal: #293e36;
+  --color-acento: #93472f;
+  --color-superficie: #ffffff;
+  --color-contraste: #ead1ad;
+  --color-borde: #ded3c4;
+  --color-fondo-secundario: #eadfce;
+  --color-capa-inicial: rgba(25, 35, 29, 0.85);
+  --color-capa-final: rgba(25, 35, 29, 0.65);
+  --color-sombra: rgba(52, 46, 41, 0.10);
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* paso 7 */
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+h2, h3 {
+    color: var(--color-principal);
+}
+
+a {
+    color: var(--color-acento);
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--color-principal);
+}
+
+.encabezado-principal {
+    color: var(--color-superficie);
+    background-color: var(--color-principal);
+    position: sticky; 
+    top: 0; 
+    z-index: 10;         
+}
+
+.marca {
+    color: var(--color-superficie);
+    font-size: 1.15rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* paso 9 */
+.barra-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    padding: 1rem 0;
+}
+
+/* paso 10 */
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    color: var(--color-superficie);
+    text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+    color: var(--color-contraste);
+}
+
+.presentacion {
+    padding: 4rem 0;
+    color: var(--color-superficie);
+    background-color: var(--color-principal);
+    background-image:
+linear-gradient(
+    to right,
+    var(--color-capa-inicial),
+    var(--color-capa-final)
+),
+url("../images/gran-muralla-china.jpg");
+background-size: cover;
+background-position: center;
+}
+
+/* paso 13 */
+.presentacion h1 {
+    max-width: 760px;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.presentacion p {
+    max-width: 640px;
+}
+
+.sobretitulo {
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--color-acento);
+}
+
+.presentacion .sobretitulo {
+    color: var(--color-contraste);
+}
+
+/* paso 14 */
+.boton-principal {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.25rem;
+    color: var(--color-superficie);
+    background-color: var(--color-acento);
+    border-radius: 0.3rem;
+    text-decoration: none;
+}
+
+.boton-principal:hover,
+.boton-principal:focus-visible {
+    color: var(--color-principal);
+    background-color: var(--color-contraste);
+}
+
+/* paso 15 */
+.seccion-maravillas {
+    padding: 3rem 0;
+}
+
+.titulo-seccion {
+    max-width: 680px;
+    margin-bottom: 2rem;
+}
+
+.titulo-seccion h2 {
+    margin: 0 0 0.75rem;
+    font-size: 2rem;
+}
+
+.maravilla {
+    flex: 1 1 300px;
+    max-width: 360px;
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px var(--color-sombra);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.maravillas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+/*
+  Respuestas del paso 16:
+  
+  a) ¿Cuántas filas intenta formar Flexbox?
+  R/ Una sola fila.
+
+  b) ¿Qué ocurre con el ancho de las tarjetas?
+  R/ Se reduce para que todas quepan.
+
+  c) ¿El contenido permanece cómodo de leer?
+  R/ No, no es comodo de leer
+*/
+
+/*
+  Respuestas del paso 17:
+  R/ Al agregar flex-wrap: wrap, los elementos flexibles ya no están obligados a 
+  mantenerse en una sola línea horizontal. Ahora, cuando el ancho de la ventana 
+  no alcanza para que quepan todos juntos, las tarjetas saltan automáticamente 
+  a una nueva fila debajo, evitando que se compriman.
+*/
+
+/*
+  Explicación del paso 19:
+  Diferencia entre gap y relleno interior (padding):
+  - gap: Crea una separación exclusiva entr los elementos flexibles dentro del 
+    contenedor. No agrega espacio en los bordes exteriores ni altera el tamaño 
+    de las cajas.
+  - padding (relleno interior): Crea espacio dentro de cada tarjeta, empujando 
+    el contenido (texto, imágenes) lejos de sus propios bordes hacia el interior.
+*/
+
+/*
+  Respuestas del paso 20:
+
+  a) ¿Por qué crece más que las tarjetas de una fila completa?
+  R/ Porque en una fila incompleta hay mucho más espacio sobrante disponible; al no haber 
+  otras tarjetas que lo compitan, la última absorbe todo ese espacio libre.
+
+  b) ¿Qué valor de flex permite ese crecimiento?
+  R/ El primer valor: flex-grow (establecido en 1 dentro de flex: 1 1 300px).
+
+  c) ¿Resulta visualmente conveniente que ocupe todo el espacio?
+  R/ No, rompe la armonía visual y la simetría del diseño respecto al resto de tarjetas.
+*/
+
+/*
+  Respuestas del paso 23:
+  a) ¿Mantienen su proporción?
+  R/No, se deforman y pierden su relación de aspecto.
+
+  b) ¿Qué diferencia se observa entre la fotografía vertical y las horizontales?
+  R/La de Petra (vertical) se ve aplastada; las horizontales encajan mejor sin distorsionarse tanto.
+*/
+.maravilla img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/*
+  Respuestas del paso 24:
+  - Con contain: la imagen matiene su tamaño y no se ve aplatada ni distorsionada,
+  pero deja mucho espacio a los lados.
+
+  - Con cover: cubre todo el espacio, pero se ve recortada.
+*/
+
+/* paso 25 */
+.maravilla-contenido {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.maravilla-contenido .ubicacion {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--color-acento);
+}
+
+.maravilla-contenido h3 {
+    font-size: 1.35rem;
+    margin: 0.25rem 0 0.75rem;
+}
+
+.maravilla-contenido a {
+    font-weight: bold;
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+
+/* .maravilla:nth-child(2) {
+  position: absolute;
+  left: 50px;
+  top: 30px;
+  z-index: 2;
+}
+ */
+
+/*
+  Respuestas del paso 27:
+  a) ¿En qué dirección se desplazó la tarjeta?
+  R/Hacia la derecha (50px) y hacia abajo (30px).
+
+  b) ¿Desde qué posición se calcula el desplazamiento?
+  R/Desde su posición original en el flujo normal del documento.
+
+  c) ¿Las demás tarjetas ocuparon su posición original?
+  R/No, su espacio original sigue intacto y reservado.
+
+  d) ¿La tarjeta desplazada puede superponerse con otras?
+  R/Sí, al desplazarse fuera de su espacio original puede montarse sobre elementos vecinos.
+*/
+
+/*
+  Respuestas del paso 28:
+  a) ¿La tarjeta se desplaza hacia la derecha o hacia la izquierda?
+  R/Hacia la izquierda.
+
+  b) ¿Por qué una coordenada situada en un lado puede producir movimiento en la dirección contraria?
+  R/Porque "right: 50px" indica un empuje o separación desde el borde derecho hacia adentro (hacia la izquierda).
+*/
+
+/*
+  Respuestas del paso 29:
+  a) ¿Qué ocurrió con las demás tarjetas?
+  R/Se recorrieron para ocupar el espacio que dejó libre la segunda tarjeta.
+
+  b) ¿Continúa reservado el espacio original de Petra?
+  R/No, al tener posicionamiento absoluto sale del flujo normal y pierde su espacio.
+
+  c) ¿Respecto de qué área parecen calcularse top y left?
+  R/Respecto a la ventana del navegador (o el área inicial del documento), al no tener un contenedor posicionado.
+*/
+
+/*
+  Respuestas del paso 30:
+  a) ¿Desde dónde se calculan ahora top y left?
+  R/Desde la esquina superior izquierda del contenedor .maravillas.
+
+  b) ¿Por qué se modificó la referencia si el contenedor no fue desplazado?
+  R/Porque cualquier elemento con position distinto de static (como relative) se convierte en el contexto de referencia para sus descendientes absolutos.
+*/
+
+/* 
+   Paso 31: Comparar relativo y absoluto.
+   a) ¿Cuál de los dos tipos de posicionamiento conserva el espacio original del elemento?
+    R/ El posicionamiento relativo (position: relative).
+
+   b) ¿Cuál permite que las demás cajas ocupen ese espacio?
+    R/ El posicionamiento absoluto (position: absolute), ya que sale del flujo normal.
+
+   c) ¿Cómo se determina el sistema de referencia de un elemento absoluto?
+    R/ Se calcula respecto al antecesor posicionado más cercano (con position distinto
+    de static). Si no existe ninguno, toma como referencia el bloque inicial del documento.
+*/
+
+/* 
+   Paso 32: Restituir el flujo normal.
+   - Acción requerida: Eliminar cualquier regla experimental previa aplicada sobre:
+    .maravilla:nth-child(2) { ... }
+    y la declaración 'position: relative;' temporal de .maravillas
+*/
+
+.maravilla-imagen {
+    position: relative;
+}
+
+.continente {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    /* Paso 34 */
+    z-index: 1;
+    padding: 0.25rem 0.75rem;
+    color: var(--color-superficie);
+    background-color: var(--color-acento);
+    border-radius: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* 
+   Paso 35: Pruebe position sticky sin coordenada.
+   a) ¿Permanece adherido el encabezado?
+    R/ No. Se desplaza junto con el resto de la página como si fuera estático.
+   b) ¿Qué información falta para indicar el punto de adhesión?
+    R/ Falta definir al menos una coordenada de umbral (como 'top', 'bottom', etc.) 
+    para indicarle al navegador en qué punto exacto de la pantalla debe comenzar a fijarse.
+*/
+
+/* 
+   Paso 37: Controle la superposición.
+   - Comparación y explicación:
+     El encabezado necesita un valor de z-index superior (10) al de las etiquetas (z-index: 1)
+     para garantizar que en el eje Z (profundidad tridimensional) el encabezado se dibuje 
+     siempre por encima de cualquier elemento posicionado de la página al hacer scroll.
+*/
+
+/* 
+   Paso 38: Fije el botón para volver al inicio.
+   a) ¿Cuál conserva su espacio original?
+    R/ El encabezado (position: sticky). Se comporta dentro del flujo normal 
+    hasta alcanzar su umbral de fijación.
+
+   b) ¿Cuál permanece ubicado respecto de la ventana desde el inicio?
+    R/ El botón .volver-arriba (position: fixed). Se extrae completamente del flujo normal 
+    y queda anclado a las coordenadas de la ventana (viewport) en todo momento.
+*/
+
+.volver-arriba {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 20;
+
+    /* Paso 39 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    color: var(--color-superficie);
+    background-color: var(--color-acento);
+    border: 2px solid var(--color-superficie);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+/*
+   Paso 40: Organice la sección histórica.
+   - seccion-historia: Relleno vertical de 3rem y fondo --color-fondo-secundario.
+
+   - historia-contenido: Contenedor flexible con salto de línea (wrap),
+    gap de 2rem y align-items en center.
+
+   - Hijos directos de historia-contenido: flex: 1 1 300px.
+*/
+
+.seccion-historia {
+    padding: 3rem 0;
+    background-color: var(--color-fondo-secundario);
+}
+
+.historia-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.historia-contenido > * {
+    flex: 1 1 300px;
+    min-width: 0;
+}
+
+/* Paso 41 */
+
+.pie-pagina {
+    padding: 2rem 0 5rem;
+    color: var(--color-superficie);
+    background-color: var(--color-principal);
+}
+
+.pie-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* 
+    Paso 42: Verificación final.
+    Todo lo cumple.
+*/
